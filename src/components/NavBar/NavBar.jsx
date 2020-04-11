@@ -38,28 +38,28 @@ const NavBar = (props) => {
       {/* SUB NAV BAR HERE */}
       <div className="ui attached stackable menu">
         <div className="ui container">
-          <a className="item">
+          <Link to="/" className="item">
             <i className="home icon"></i> Home
-          </a>
-          <a className="item">
+          </Link>
+          <Link to="/" className="item">
             <i className="grid layout icon"></i> Browse
-          </a>
-          <a className="item">
+          </Link>
+          <Link to="/" className="item">
             <i className="mail icon"></i> Messages
-          </a>
+          </Link>
           <div className="ui simple dropdown item">
             More
             <i className="dropdown icon"></i>
             <div className="menu">
-              <a className="item">
+              <Link to="/" className="item">
                 <i className="edit icon"></i> Edit Profile
-              </a>
-              <a className="item">
+              </Link>
+              <Link to="/" className="item">
                 <i className="globe icon"></i> Choose Language
-              </a>
-              <a className="item">
+              </Link>
+              <Link to="/" className="item">
                 <i className="settings icon"></i> Account Settings
-              </a>
+              </Link>
             </div>
           </div>
           <div className="right item">
