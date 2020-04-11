@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./NavBar.css";
+// import FGlogo from "../../../public/FGlogo";
 
 const NavBar = (props) => {
   let nav = props.user ? (
@@ -25,7 +26,7 @@ const NavBar = (props) => {
 
   return (
     <div className="NavBar ui segment">
-      {/* <img src={require("./FGlogo.png")} /> */}
+      {/* <img src={FGlogo} /> */}
       <h1 className="Title">
         <span className="bigletter">F</span>ood&nbsp;&nbsp;&nbsp;
         <span className="bigletter">G</span>uru
