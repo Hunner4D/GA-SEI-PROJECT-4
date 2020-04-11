@@ -1,3 +1,6 @@
-.SyncButton {
-  margin: 0 auto;
+.LPbody {
+  background-color: #66b3ba;
+  height: 90vh;
+  border: 1vw solid white;
+  border-top: 0;
 }
