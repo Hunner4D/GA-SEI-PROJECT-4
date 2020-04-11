@@ -1,6 +1,15 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import userService from "../../utils/userService";
+import {
+  Button,
+  Form,
+  Grid,
+  Header,
+  Image,
+  Message,
+  Segment,
+} from "semantic-ui-react";
 import "./SignupForm.css";
 
 class SignupForm extends Component {
@@ -119,71 +128,77 @@ class SignupForm extends Component {
   render() {
     return (
       <div>
-        <header className="header-footer">Sign Up</header>
-        <form className="form-horizontal" onSubmit={this.handleSubmit}>
-          <div className="form-group">
-            <div className="col-sm-12">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Name"
-                value={this.state.name}
-                name="name"
-                onChange={this.handleChange}
-              />
-            </div>
-          </div>
-          <div className="form-group">
-            <div className="col-sm-12">
-              <input
-                type="email"
-                className="form-control"
-                placeholder="Email"
-                value={this.state.email}
-                name="email"
-                onChange={this.handleChange}
-              />
-            </div>
-          </div>
-          <div className="form-group">
-            <div className="col-sm-12">
-              <input
-                type="password"
-                className="form-control"
-                placeholder="Password"
-                value={this.state.password}
-                name="password"
-                onChange={this.handleChange}
-              />
-            </div>
-          </div>
-          <div className="form-group">
-            <div className="col-sm-12">
-              <input
-                type="password"
-                className="form-control"
-                placeholder="Confirm Password"
-                value={this.state.passwordConf}
-                name="passwordConf"
-                onChange={this.handleChange}
-              />
-            </div>
-          </div>
-          <div className="form-group">
-            <div className="col-sm-12 text-center">
-              {this.applyButtonClasses()}
-              &nbsp;&nbsp;
-              <button
-                className="btn btn-default"
-                disabled={this.isFormInvalid()}
-              >
-                Sign Up
-              </button>
-              &nbsp;&nbsp;
+        <Grid
+          textAlign="center"
+          style={{ height: "100vh", width: "100vw" }}
+          verticalAlign="middle"
+        >
+          <Grid.Column style={{ maxWidth: 450 }}>
+            <Header as="h2" color="teal" textAlign="center">
+              <Image src="/logo.png" /> Sign Up with Food Guru
+            </Header>
+            <Form size="large" onSubmit={this.handleSubmit}>
+              <Segment stacked>
+                <Form.Input
+                  name="name"
+                  value={this.state.name}
+                  onChange={this.handleChange}
+                  placeholder="Name"
+                  fluid
+                  icon="user"
+                  iconPosition="left"
+                />
+                <Form.Input
+                  type="email"
+                  name="email"
+                  value={this.state.email}
+                  onChange={this.handleChange}
+                  placeholder="Email"
+                  fluid
+                  icon="user"
+                  iconPosition="left"
+                />
+                <Form.Input
+                  name="password"
+                  value={this.state.password}
+                  onChange={this.handleChange}
+                  placeholder="Password"
+                  type="password"
+                  fluid
+                  icon="lock"
+                  iconPosition="left"
+                />
+                <Form.Input
+                  name="passwordConf"
+                  value={this.state.passwordConf}
+                  onChange={this.handleChange}
+                  placeholder="Confirm Password"
+                  type="password"
+                  fluid
+                  icon="lock"
+                  iconPosition="left"
+                />
+
+                {this.applyButtonClasses()}
+                <br />
+                <br />
+                <br />
+
+                <Button
+                  color="teal"
+                  fluid
+                  size="large"
+                  disabled={this.isFormInvalid()}
+                >
+                  Sign Up
+                </Button>
+              </Segment>
+            </Form>
+            <Message>
               <Link to="/">Cancel</Link>
-            </div>
-          </div>
-        </form>
+            </Message>
+          </Grid.Column>
+        </Grid>
       </div>
     );
   }
