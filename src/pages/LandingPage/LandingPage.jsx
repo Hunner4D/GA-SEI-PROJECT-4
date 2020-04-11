@@ -11,6 +11,12 @@ const LandingPage = (props) => {
         handleSignupOrLogin={props.handleSignupOrLogin}
         handleLogout={props.handleLogout}
       />
+
+      <div className="ui container">
+        <button className="ui segment" onClick={props.syncLocation}>
+          Sync Location
+        </button>
+      </div>
     </div>
   );
 };

@@ -11,6 +11,10 @@ class App extends React.Component {
     super();
     this.state = {
       user: userService.getUser(),
+      coords: {
+        lat: null,
+        long: null,
+      },
     };
   }
 
@@ -21,6 +25,21 @@ class App extends React.Component {
 
   handleSignupOrLogin = () => {
     this.setState({ user: userService.getUser() });
+  };
+
+  syncLocation = () => {
+    window.navigator.geolocation.getCurrentPosition(
+      (position) => {
+        this.setState({
+          coords: {
+            lat: position.coords.latitude,
+            long: position.coords.longitude,
+          },
+        });
+        console.log("current state", this.state);
+      },
+      (err) => console.log(err)
+    );
   };
 
   render() {
@@ -35,6 +54,7 @@ class App extends React.Component {
                 user={this.state.user}
                 handleSignupOrLogin={this.handleSignupOrLogin}
                 handleLogout={this.handleLogout}
+                syncLocation={this.syncLocation}
               />
             )}
           />
