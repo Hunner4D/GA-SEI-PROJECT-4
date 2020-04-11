@@ -25,6 +25,7 @@ const NavBar = (props) => {
 
   return (
     <div className="NavBar ui segment">
+      {/* <img src={require("./FGlogo.png")} /> */}
       <h1 className="Title">
         <span className="bigletter">F</span>ood&nbsp;&nbsp;&nbsp;
         <span className="bigletter">G</span>uru
