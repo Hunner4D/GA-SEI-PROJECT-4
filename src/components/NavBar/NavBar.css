@@ -2,7 +2,8 @@
   display: flex;
   justify-content: space-between;
   margin: 0 0 20px;
-  background-color: #cdeac0 !important;
+  /* background-color: #cdeac0 !important; */
+  background-color: #38686a !important;
 }
 
 .LinkBody {
@@ -12,6 +13,14 @@
 
 .NavBar-link {
   margin: 0 10px;
+  background-color: #38686a;
+  color: #cdeac0;
+  padding: 5px 10px;
+  border-radius: 1vh;
+}
+
+.NavBar-link:hover {
+  color: white;
 }
 
 .NavBar-welcome {
@@ -20,7 +29,7 @@
 
 .Title {
   margin-bottom: 0;
-  color: white;
+  color: #cdeac0;
   text-emphasis-color: black;
   font-weight: bolder;
   font-size: 40px;
