@@ -6,12 +6,12 @@ module.exports = {
 };
 
 async function getYelp(req, res) {
-  console.log("hitting controller");
+  console.log("hitting controller. term: ", req.body);
   // Place holder for Yelp Fusion's API Key. Grab them
   // from https://www.yelp.com/developers/v3/manage_app
   const apiKey = YELPSECRET;
   const searchRequest = {
-    term: "Four Barrel Coffee",
+    term: req.body.term,
     location: "san francisco, ca",
   };
   const client = yelp.client(apiKey);

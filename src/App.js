@@ -45,7 +45,7 @@ class App extends React.Component {
 
   apiGrab = async (query) => {
     console.log("query: ", query);
-    const yelpRequest = await routeToYelp();
+    const yelpRequest = await routeToYelp(query);
     console.log("logged back to App: ", yelpRequest);
   };
 

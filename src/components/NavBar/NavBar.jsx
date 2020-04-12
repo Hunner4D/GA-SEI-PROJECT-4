@@ -2,13 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./NavBar.css";
 // import FGlogo from "../../../public/FGlogo";
-import { Button, Form } from "semantic-ui-react";
+import { Form } from "semantic-ui-react";
 
 class NavBar extends React.Component {
   constructor() {
     super();
     this.state = {
-      query: "",
+      term: "",
     };
   }
 
@@ -20,7 +20,7 @@ class NavBar extends React.Component {
   };
 
   handleSearchSubmit = () => {
-    this.props.apiGrab(this.state.query);
+    this.props.apiGrab(this.state);
   };
 
   responsiveNav = () => {
@@ -50,7 +50,7 @@ class NavBar extends React.Component {
     return (
       <div>
         <div className="NavBar ui segment">
-          <img src={"../../../build/static/media/logo.png"} />
+          <img src={"./media/logo.png"} alt="logo" />
           <h1 className="Title">
             <span className="bigletter">F</span>ood&nbsp;&nbsp;&nbsp;
             <span className="bigletter">G</span>uru
@@ -90,10 +90,10 @@ class NavBar extends React.Component {
                 <Form onSubmit={this.handleSearchSubmit}>
                   <Form.Input
                     className="navInput"
-                    name="query"
+                    name="term"
                     type="text"
                     placeholder="Search For Food..."
-                    value={this.state.query}
+                    value={this.state.term}
                     onChange={this.handleSearchChange}
                   />
                 </Form>
