@@ -31,13 +31,11 @@
   color: #cdeac0;
   text-emphasis-color: black;
   font-weight: bolder;
-  /* font-size: 40px; */
   font-size: 4vw;
   -webkit-text-stroke-width: 0.5px;
   -webkit-text-stroke-color: black;
   text-shadow: 1px 2px 4px black;
   font-style: italic;
-  margin-left: 2vh;
   font-family: "Raleway", sans-serif;
   padding: 10px 20px;
 }
@@ -52,6 +50,10 @@
 
 .navInput {
   font-size: 1vw;
+}
+
+::placeholder {
+  color: black !important;
 }
 
 @media only screen and (max-width: 600px) {

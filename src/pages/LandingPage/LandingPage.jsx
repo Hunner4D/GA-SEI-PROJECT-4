@@ -14,11 +14,9 @@ const LandingPage = (props) => {
       />
 
       <div className="ui container LPbody">
+        <br />
         <button className="ui segment" onClick={props.syncLocation}>
           Sync Location
-        </button>
-        <button className="ui segment" onClick={props.apiGrab}>
-          Test Yelp for location
         </button>
       </div>
     </div>
