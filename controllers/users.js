@@ -8,7 +8,6 @@ const yelp = require("yelp-fusion");
 module.exports = {
   signup,
   login,
-  getYelp,
 };
 
 async function signup(req, res) {
@@ -41,49 +40,6 @@ async function login(req, res) {
     return res.status(401).json(err);
   }
 }
-
-/////////////////////////////////////////////////////////////
-
-async function getYelp(req, res) {
-  console.log("hitting function");
-  // Place holder for Yelp Fusion's API Key. Grab them
-  // from https://www.yelp.com/developers/v3/manage_app
-  const apiKey = YELPSECRET;
-  const searchRequest = {
-    term: "Four Barrel Coffee",
-    location: "san francisco, ca",
-  };
-  const client = yelp.client(apiKey);
-  client
-    .search(searchRequest)
-    .then((response) => {
-      const firstResult = response.jsonBody.businesses[0];
-      const prettyJson = JSON.stringify(firstResult, null, 4);
-      console.log(prettyJson);
-    })
-    .catch((e) => {
-      console.log(e);
-    });
-}
-
-/////////////////////////////////////////////////////////////
-
-// async function getYelp(req, res) {
-//   try {
-//     const response = await axiosYelp.get("/businesses/search", {
-//       params: {
-//         term: "food",
-//         // latitude: this.state.coords.lat,
-//         // longitude: this.state.coords.long,
-//         location: "san francisco, ca",
-//         key: YELPSECRET,
-//       },
-//     });
-//     res.json(response);
-//   } catch (err) {
-//     return res.status(401).json(err);
-//   }
-// }
 
 /*----- Helper Functions -----*/
 
