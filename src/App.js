@@ -49,6 +49,10 @@ class App extends React.Component {
     console.log(yelpRequest);
   };
 
+  handleSearchChange = (query) => {
+    console.log(query);
+  };
+
   render() {
     return (
       <div className="App">
@@ -63,6 +67,8 @@ class App extends React.Component {
                 handleLogout={this.handleLogout}
                 syncLocation={this.syncLocation}
                 apiGrab={this.apiGrab}
+                handleSearchChange={this.handleSearchChange}
+                yelpRequest={this.state.yelpRequest}
               />
             )}
           />

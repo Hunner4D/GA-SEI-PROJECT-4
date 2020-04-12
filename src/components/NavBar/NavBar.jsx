@@ -2,6 +2,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./NavBar.css";
 // import FGlogo from "../../../public/FGlogo";
+import {
+  Button,
+  Form,
+  Grid,
+  Header,
+  Image,
+  Message,
+  Segment,
+} from "semantic-ui-react";
 
 const NavBar = (props) => {
   let nav = props.user ? (
@@ -64,9 +73,16 @@ const NavBar = (props) => {
           </div>
           <div className="right item">
             <div className="ui input">
-              {/* <Form> */}
-              <input type="text" placeholder="Search..." />
-              {/* </Form> */}
+              <Form>
+                <Form.Input
+                  type="text"
+                  placeholder="Search..."
+                  // value={this.state.email}
+                  onChange={() => {
+                    props.handleSearchChange("yo");
+                  }}
+                />
+              </Form>
             </div>
           </div>
         </div>
