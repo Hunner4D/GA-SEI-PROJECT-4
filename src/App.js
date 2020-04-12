@@ -5,8 +5,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import userService from "./utils/userService";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import SignupPage from "./pages/SignupPage/SignupPage";
-import yelpfusion from "./api/yelpfusion";
-import yelpfusionkey from "./api/yelpfusionkey";
+import { routeToYelp } from "./utils/yelpService";
 
 class App extends React.Component {
   constructor() {
@@ -17,6 +16,7 @@ class App extends React.Component {
         lat: null,
         long: null,
       },
+      yelpRequest: null,
     };
   }
 
@@ -44,41 +44,9 @@ class App extends React.Component {
     );
   };
 
-  apiGrab = async () => {
-    const response = await yelpfusion.get("/businesses/search", {
-      params: {
-        term: "food",
-        latitude: this.state.coords.lat,
-        longitude: this.state.coords.long,
-        key: yelpfusionkey,
-      },
-    });
-    console.log(response);
-
-    /////////////////////////////////////////////////////////////
-
-    // const yelp = require("yelp-fusion");
-    // // Place holder for Yelp Fusion's API Key. Grab them
-    // // from https://www.yelp.com/developers/v3/manage_app
-    // const apiKey = yelpfusionkey;
-
-    // const searchRequest = {
-    //   term: "Four Barrel Coffee",
-    //   location: "san francisco, ca",
-    // };
-
-    // const client = yelp.client(apiKey);
-
-    // client
-    //   .search(searchRequest)
-    //   .then((response) => {
-    //     const firstResult = response.jsonBody.businesses[0];
-    //     const prettyJson = JSON.stringify(firstResult, null, 4);
-    //     console.log(prettyJson);
-    //   })
-    //   .catch((e) => {
-    //     console.log(e);
-    //   });
+  apiGrab = async (e) => {
+    const yelpRequest = await routeToYelp();
+    console.log(yelpRequest);
   };
 
   render() {
