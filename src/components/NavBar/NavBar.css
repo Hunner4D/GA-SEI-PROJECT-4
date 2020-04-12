@@ -49,3 +49,25 @@
 .subNav {
   font-size: 1vw;
 }
+
+.navInput {
+  font-size: 1vw;
+}
+
+@media only screen and (max-width: 600px) {
+  .Title {
+    font-size: 4vw;
+  }
+  .bigletter {
+    font-size: 5vw;
+  }
+  .LinkBody {
+    font-size: 3vw;
+  }
+  .subNav {
+    font-size: 3vw;
+  }
+  .navInput {
+    font-size: 3vw;
+  }
+}

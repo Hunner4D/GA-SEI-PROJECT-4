@@ -89,9 +89,10 @@ class NavBar extends React.Component {
               <div className="ui input">
                 <Form onSubmit={this.handleSearchSubmit}>
                   <Form.Input
+                    className="navInput"
                     name="query"
                     type="text"
-                    placeholder="Search..."
+                    placeholder="Search For Food..."
                     value={this.state.query}
                     onChange={this.handleSearchChange}
                   />
