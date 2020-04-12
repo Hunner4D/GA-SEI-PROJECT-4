@@ -1,9 +1,6 @@
 const User = require("../models/user");
 const jwt = require("jsonwebtoken");
 const SECRET = process.env.SECRET;
-// const axiosYelp = require("./axiosYelp");
-const YELPSECRET = process.env.YELP_SECRET;
-const yelp = require("yelp-fusion");
 
 module.exports = {
   signup,

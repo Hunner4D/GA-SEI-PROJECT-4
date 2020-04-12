@@ -16,7 +16,6 @@ class App extends React.Component {
         lat: null,
         long: null,
       },
-      yelpRequest: null,
     };
   }
 
@@ -44,13 +43,10 @@ class App extends React.Component {
     );
   };
 
-  apiGrab = async (e) => {
+  apiGrab = async (query) => {
+    console.log("query: ", query);
     const yelpRequest = await routeToYelp();
-    console.log(yelpRequest);
-  };
-
-  handleSearchChange = (query) => {
-    console.log(query);
+    console.log("logged back to App: ", yelpRequest);
   };
 
   render() {
@@ -67,8 +63,6 @@ class App extends React.Component {
                 handleLogout={this.handleLogout}
                 syncLocation={this.syncLocation}
                 apiGrab={this.apiGrab}
-                handleSearchChange={this.handleSearchChange}
-                yelpRequest={this.state.yelpRequest}
               />
             )}
           />

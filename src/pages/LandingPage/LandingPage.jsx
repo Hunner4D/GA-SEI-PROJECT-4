@@ -10,8 +10,7 @@ const LandingPage = (props) => {
         user={props.user}
         handleSignupOrLogin={props.handleSignupOrLogin}
         handleLogout={props.handleLogout}
-        handleSearchChange={props.handleSearchChange}
-        yelpRequest={props.yelpRequest}
+        apiGrab={props.apiGrab}
       />
 
       <div className="ui container LPbody">

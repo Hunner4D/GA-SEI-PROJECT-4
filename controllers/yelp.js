@@ -6,7 +6,7 @@ module.exports = {
 };
 
 async function getYelp(req, res) {
-  console.log("hitting function");
+  console.log("hitting controller");
   // Place holder for Yelp Fusion's API Key. Grab them
   // from https://www.yelp.com/developers/v3/manage_app
   const apiKey = YELPSECRET;
@@ -20,9 +20,10 @@ async function getYelp(req, res) {
     .then((response) => {
       const firstResult = response.jsonBody.businesses[0];
       const prettyJson = JSON.stringify(firstResult, null, 4);
-      console.log(prettyJson);
+      const prettyObj = JSON.parse(prettyJson);
+      res.json(prettyObj);
     })
     .catch((e) => {
-      console.log(e);
+      console.log("error dude: ", e);
     });
 }
