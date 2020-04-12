@@ -37,7 +37,7 @@ const NavBar = (props) => {
 
       {/* SUB NAV BAR HERE */}
       <div className="ui attached stackable menu">
-        <div className="ui container">
+        <div className="ui container subNav">
           <Link to="/" className="item">
             <i className="home icon"></i> Home
           </Link>

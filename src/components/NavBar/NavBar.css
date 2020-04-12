@@ -31,7 +31,8 @@
   color: #cdeac0;
   text-emphasis-color: black;
   font-weight: bolder;
-  font-size: 40px;
+  /* font-size: 40px; */
+  font-size: 4vw;
   -webkit-text-stroke-width: 0.5px;
   -webkit-text-stroke-color: black;
   text-shadow: 1px 2px 4px black;
@@ -42,5 +43,9 @@
 }
 
 .bigletter {
-  font-size: 55px;
+  font-size: 5vw;
+}
+
+.subNav {
+  font-size: 1vw;
 }
