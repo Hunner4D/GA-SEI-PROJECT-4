@@ -64,7 +64,9 @@ const NavBar = (props) => {
           </div>
           <div className="right item">
             <div className="ui input">
+              {/* <Form> */}
               <input type="text" placeholder="Search..." />
+              {/* </Form> */}
             </div>
           </div>
         </div>
