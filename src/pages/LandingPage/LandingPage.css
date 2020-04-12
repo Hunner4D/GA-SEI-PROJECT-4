@@ -4,3 +4,7 @@
   border: 1vw solid white;
   border-top: 0;
 }
+
+.syncButton {
+  margin-top: 15px !important;
+}

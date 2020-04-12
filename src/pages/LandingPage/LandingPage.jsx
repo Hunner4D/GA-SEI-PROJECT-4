@@ -14,8 +14,7 @@ const LandingPage = (props) => {
       />
 
       <div className="ui container LPbody">
-        <br />
-        <button className="ui segment" onClick={props.syncLocation}>
+        <button className="ui segment syncButton" onClick={props.syncLocation}>
           Sync Location
         </button>
       </div>
