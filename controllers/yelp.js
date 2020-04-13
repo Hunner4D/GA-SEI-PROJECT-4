@@ -12,14 +12,17 @@ async function getYelp(req, res) {
   const apiKey = YELPSECRET;
   const searchRequest = {
     term: req.body.term,
-    location: "san francisco, ca",
+    // location: "san francisco, ca",
+    latitude: req.body.lat,
+    longitude: req.body.long,
   };
   const client = yelp.client(apiKey);
   client
     .search(searchRequest)
     .then((response) => {
-      const firstResult = response.jsonBody.businesses[0];
-      const prettyJson = JSON.stringify(firstResult, null, 4);
+      const Result = response.jsonBody.businesses;
+      //   const Result = response.jsonBody;
+      const prettyJson = JSON.stringify(Result, null, 4);
       const prettyObj = JSON.parse(prettyJson);
       res.json(prettyObj);
     })

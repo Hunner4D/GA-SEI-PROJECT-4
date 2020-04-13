@@ -1,10 +1,24 @@
 .LPbody {
   background-color: #66b3ba;
-  height: 90vh;
+  min-height: 86vh;
   border: 1vw solid white;
   border-top: 0;
 }
 
+.flexButtons {
+  display: flex !important;
+  justify-content: space-between !important;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
 .syncButton {
-  margin-top: 15px !important;
+  margin: 0 !important;
+  font-size: 1vw !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .syncButton {
+    font-size: 3vw !important;
+  }
 }

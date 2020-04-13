@@ -20,7 +20,7 @@ class NavBar extends React.Component {
   };
 
   handleSearchSubmit = () => {
-    this.props.apiGrab(this.state);
+    this.props.apiGrab(this.state.term);
   };
 
   responsiveNav = () => {

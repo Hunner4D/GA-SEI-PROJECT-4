@@ -50,6 +50,7 @@
 
 .navInput {
   font-size: 1vw;
+  width: 20vw;
 }
 
 ::placeholder {
@@ -71,5 +72,12 @@
   }
   .navInput {
     font-size: 3vw;
+    width: 80vw;
+  }
+}
+
+@media only screen and (min-width: 2200px) {
+  .navInput {
+    max-width: 10vw;
   }
 }

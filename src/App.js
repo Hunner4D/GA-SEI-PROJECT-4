@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import LandingPage from "./pages/LandingPage/LandingPage";
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import userService from "./utils/userService";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import SignupPage from "./pages/SignupPage/SignupPage";
@@ -16,6 +16,7 @@ class App extends React.Component {
         lat: null,
         long: null,
       },
+      yelpGrabs: [],
     };
   }
 
@@ -37,16 +38,27 @@ class App extends React.Component {
             long: position.coords.longitude,
           },
         });
-        console.log("current state", this.state);
       },
       (err) => console.log(err)
     );
   };
 
-  apiGrab = async (query) => {
-    console.log("query: ", query);
+  apiGrab = async (term) => {
+    if (this.state.coords.lat === null) {
+      alert("Sync Location to find local Gurb!");
+      return;
+    }
+    let query = {
+      term: term,
+      lat: this.state.coords.lat,
+      long: this.state.coords.long,
+    };
+    // console.log("query: ", query);
     const yelpRequest = await routeToYelp(query);
-    console.log("logged back to App: ", yelpRequest);
+    // console.log("logged back to App: ", yelpRequest);
+    this.setState({
+      yelpGrabs: yelpRequest,
+    });
   };
 
   render() {
@@ -63,6 +75,7 @@ class App extends React.Component {
                 handleLogout={this.handleLogout}
                 syncLocation={this.syncLocation}
                 apiGrab={this.apiGrab}
+                yelpGrabs={this.state.yelpGrabs}
               />
             )}
           />
