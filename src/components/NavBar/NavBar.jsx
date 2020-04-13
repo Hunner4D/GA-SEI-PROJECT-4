@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./NavBar.css";
 // import FGlogo from "../../../public/FGlogo";
-import { Form } from "semantic-ui-react";
+import { Form, Image } from "semantic-ui-react";
 
 class NavBar extends React.Component {
   constructor() {
@@ -49,15 +49,17 @@ class NavBar extends React.Component {
   render() {
     return (
       <div>
-        <div className="NavBar ui segment">
-          <img src={"./media/logo.png"} alt="logo" />
+        <div className="bigHeader">
           <h1 className="Title">
             <span className="bigletter">F</span>ood&nbsp;&nbsp;&nbsp;
             <span className="bigletter">G</span>uru
           </h1>
-          {this.responsiveNav()}
-        </div>
+          <div className="NavBar ui segment">
+            <Image src={"./media/logo.png"} size="tiny" />
 
+            {this.responsiveNav()}
+          </div>
+        </div>
         {/* SUB NAV BAR HERE */}
         <div className="ui attached stackable menu">
           <div className="ui container subNav">

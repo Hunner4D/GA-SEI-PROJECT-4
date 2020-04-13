@@ -17,6 +17,24 @@
   font-size: 1vw !important;
 }
 
+.homeScreen {
+  margin-top: 15vh;
+}
+
+.homeScreenImage {
+  animation: rotation 3s infinite linear;
+  margin: 8vh auto;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
 @media only screen and (max-width: 600px) {
   .syncButton {
     font-size: 3vw !important;

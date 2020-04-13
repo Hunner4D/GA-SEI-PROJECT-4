@@ -1,6 +1,6 @@
 import React from "react";
 import NavBar from "../../components/NavBar/NavBar";
-import { Card } from "semantic-ui-react";
+import { Card, Header, Container, Image } from "semantic-ui-react";
 
 import "./LandingPage.css";
 
@@ -8,11 +8,39 @@ const LandingPage = (props) => {
   const homeScreen = () => {
     if (props.yelpGrabs.length) return;
     return (
-      <div>
-        <h1>Welcome!</h1>
-      </div>
-
-      //uhhh
+      <Container text textAlign="center" className="homeScreen">
+        <Header
+          as="h1"
+          content="Imagine if..."
+          inverted
+          style={{
+            fontWeight: "normal",
+            marginBottom: 0,
+            fontSize: 40,
+          }}
+        />
+        <Header
+          as="h2"
+          content="hole-in-the-walls"
+          inverted
+          style={{
+            fontWeight: "normal",
+          }}
+        />
+        <Header
+          as="h2"
+          content="weren't hole-in-the-walls..."
+          inverted
+          style={{
+            fontWeight: "normal",
+          }}
+        />
+        <Image
+          src="https://imgur.com/ai0fB8H"
+          size="medium"
+          className="homeScreenImage"
+        />
+      </Container>
     );
   };
 
