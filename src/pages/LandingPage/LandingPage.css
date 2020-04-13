@@ -23,7 +23,7 @@
 
 .homeScreenImage {
   animation: rotation 3s infinite linear;
-  margin: 8vh auto;
+  margin: 10vh auto;
 }
 
 @keyframes rotation {
@@ -38,5 +38,11 @@
 @media only screen and (max-width: 600px) {
   .syncButton {
     font-size: 3vw !important;
+  }
+}
+
+@media only screen and (min-width: 1800px) {
+  .LPbody {
+    min-width: 90vw;
   }
 }

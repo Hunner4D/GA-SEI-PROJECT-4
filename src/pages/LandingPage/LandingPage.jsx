@@ -69,6 +69,7 @@ const LandingPage = (props) => {
         handleSignupOrLogin={props.handleSignupOrLogin}
         handleLogout={props.handleLogout}
         apiGrab={props.apiGrab}
+        clearYelpGrabs={props.clearYelpGrabs}
       />
 
       <div className="ui container LPbody">

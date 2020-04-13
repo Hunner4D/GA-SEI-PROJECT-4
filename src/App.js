@@ -61,6 +61,12 @@ class App extends React.Component {
     });
   };
 
+  clearYelpGrabs = () => {
+    this.setState({
+      yelpGrabs: [],
+    });
+  };
+
   render() {
     return (
       <div className="App">
@@ -76,6 +82,7 @@ class App extends React.Component {
                 syncLocation={this.syncLocation}
                 apiGrab={this.apiGrab}
                 yelpGrabs={this.state.yelpGrabs}
+                clearYelpGrabs={this.clearYelpGrabs}
               />
             )}
           />

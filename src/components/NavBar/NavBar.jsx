@@ -63,7 +63,7 @@ class NavBar extends React.Component {
         {/* SUB NAV BAR HERE */}
         <div className="ui attached stackable menu">
           <div className="ui container subNav">
-            <Link to="/" className="item">
+            <Link to="/" className="item" onClick={this.props.clearYelpGrabs}>
               <i className="home icon"></i> Home
             </Link>
             <Link to="/" className="item">
