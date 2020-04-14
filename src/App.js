@@ -5,6 +5,8 @@ import { Route, Switch } from "react-router-dom";
 import userService from "./utils/userService";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import SignupPage from "./pages/SignupPage/SignupPage";
+import MessagesPage from "./pages/MessagesPage/MessagesPage";
+import LocationsPage from "./pages/LocationsPage/LocationsPage";
 import { routeToYelp } from "./utils/yelpService";
 
 class App extends React.Component {
@@ -55,7 +57,7 @@ class App extends React.Component {
     };
     // console.log("query: ", query);
     const yelpRequest = await routeToYelp(query);
-    // console.log("logged back to App: ", yelpRequest);
+    console.log("logged back to App: ", yelpRequest);
     this.setState({
       yelpGrabs: yelpRequest,
     });
@@ -103,6 +105,29 @@ class App extends React.Component {
               <LoginPage
                 history={history}
                 handleSignupOrLogin={this.handleSignupOrLogin}
+              />
+            )}
+          />
+          {/* If NO USER restrict below */}
+          <Route
+            exact
+            path="/messages"
+            render={({ history }) => (
+              <MessagesPage
+                history={history}
+                user={this.state.user}
+                handleLogout={this.handleLogout}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/locations"
+            render={({ history }) => (
+              <LocationsPage
+                history={history}
+                user={this.state.user}
+                handleLogout={this.handleLogout}
               />
             )}
           />

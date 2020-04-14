@@ -1,8 +1,9 @@
-import React from "react";
+import React, { createRef } from "react";
 import { Link } from "react-router-dom";
 import "./NavBar.css";
 // import FGlogo from "../../../public/FGlogo";
-import { Form, Image } from "semantic-ui-react";
+import { Form, Image, Sticky, Button } from "semantic-ui-react";
+import logo from "../../assets/logo.png";
 
 class NavBar extends React.Component {
   constructor() {
@@ -55,21 +56,22 @@ class NavBar extends React.Component {
             <span className="bigletter">G</span>uru
           </h1>
           <div className="NavBar ui segment">
-            <Image src={"./media/logo.png"} size="tiny" />
+            <Image src={logo} size="tiny" />
 
             {this.responsiveNav()}
           </div>
         </div>
         {/* SUB NAV BAR HERE */}
+
         <div className="ui attached stackable menu">
           <div className="ui container subNav">
             <Link to="/" className="item" onClick={this.props.clearYelpGrabs}>
               <i className="home icon"></i> Home
             </Link>
-            <Link to="/" className="item">
+            <Link to="/locations" className="item">
               <i className="grid layout icon"></i> Browse
             </Link>
-            <Link to="/" className="item">
+            <Link to="/messages" className="item">
               <i className="mail icon"></i> Messages
             </Link>
             <div className="ui simple dropdown item">
@@ -89,7 +91,7 @@ class NavBar extends React.Component {
             </div>
             <div className="right item">
               <div className="ui input">
-                <Form onSubmit={this.handleSearchSubmit}>
+                <Form onSubmit={this.handleSearchSubmit} className="searchForm">
                   <Form.Input
                     className="navInput"
                     name="term"
@@ -98,6 +100,7 @@ class NavBar extends React.Component {
                     value={this.state.term}
                     onChange={this.handleSearchChange}
                   />
+                  <Button className="ui segment searchButton">Go</Button>
                 </Form>
               </div>
             </div>

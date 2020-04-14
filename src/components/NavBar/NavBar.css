@@ -61,6 +61,11 @@
   font-size: 1vw;
 }
 
+.searchForm {
+  display: flex;
+  flex-direction: row;
+}
+
 .navInput {
   font-size: 1vw;
   width: 20vw;
@@ -68,6 +73,12 @@
 
 ::placeholder {
   color: black !important;
+}
+
+.searchButton {
+  margin: 0 !important;
+  height: min-content;
+  font-size: 0.75vw !important;
 }
 
 @media only screen and (max-width: 600px) {
@@ -86,6 +97,9 @@
   .navInput {
     font-size: 3vw;
     width: 80vw;
+  }
+  .searchButton {
+    font-size: 2.25vw !important;
   }
 }
 

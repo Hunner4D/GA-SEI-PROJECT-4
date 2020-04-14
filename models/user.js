@@ -3,12 +3,23 @@ const bcrypt = require("bcrypt");
 
 const SALT_ROUNDS = 6;
 
+const locationSchema = new mongoose.Schema({
+  id: String,
+  name: String,
+  rating: Number,
+  price: String,
+  categories: Array,
+  address: Object,
+  phone: String,
+});
+
 const userSchema = new mongoose.Schema(
   {
     name: String,
     email: { type: String, required: true, lowercase: true, unique: true },
     password: String,
     guru: Boolean,
+    savedLocations: [locationSchema],
   },
   {
     timestamps: true,

@@ -1,6 +1,7 @@
 import React from "react";
 import NavBar from "../../components/NavBar/NavBar";
 import { Card, Header, Container, Image } from "semantic-ui-react";
+import burger from "../../assets/burger.png";
 
 import "./LandingPage.css";
 
@@ -11,7 +12,7 @@ const LandingPage = (props) => {
       <Container text textAlign="center" className="homeScreen">
         <Header
           as="h1"
-          content="Imagine if..."
+          content="Find yourself..."
           inverted
           style={{
             fontWeight: "normal",
@@ -21,25 +22,23 @@ const LandingPage = (props) => {
         />
         <Header
           as="h2"
-          content="hole-in-the-walls"
+          content="inside the dankest"
           inverted
           style={{
             fontWeight: "normal",
+            fontSize: 25,
           }}
         />
         <Header
           as="h2"
-          content="weren't hole-in-the-walls..."
+          content="hidden gems in your area!"
           inverted
           style={{
             fontWeight: "normal",
+            fontSize: 25,
           }}
         />
-        <Image
-          src="https://imgur.com/ai0fB8H"
-          size="medium"
-          className="homeScreenImage"
-        />
+        <Image src={burger} size="large" className="homeScreenImage" />
       </Container>
     );
   };
