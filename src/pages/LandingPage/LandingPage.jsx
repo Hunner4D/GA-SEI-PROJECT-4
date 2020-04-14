@@ -50,8 +50,7 @@ const LandingPage = (props) => {
     let addCardContent = <span className="addCardContent">+</span>;
 
     return (
-      // <Container fluid style={{ marginBottom: 40 }} key={item.name}>
-      <div className="cardContainer">
+      <div className="cardContainer" key={item.name}>
         <Card
           fluid
           color="yellow"
@@ -78,7 +77,6 @@ const LandingPage = (props) => {
           onClick={() => props.addToLocations(item)}
         />
       </div>
-      // </Container>
     );
   });
 
