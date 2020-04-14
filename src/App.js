@@ -7,7 +7,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import SignupPage from "./pages/SignupPage/SignupPage";
 import MessagesPage from "./pages/MessagesPage/MessagesPage";
 import LocationsPage from "./pages/LocationsPage/LocationsPage";
-import { routeToYelp } from "./utils/yelpService";
+import { routeToYelp, addLocation } from "./utils/yelpService";
 
 class App extends React.Component {
   constructor() {
@@ -69,6 +69,10 @@ class App extends React.Component {
     });
   };
 
+  addToLocations = (obj) => {
+    console.log(obj);
+  };
+
   render() {
     return (
       <div className="App">
@@ -85,6 +89,7 @@ class App extends React.Component {
                 apiGrab={this.apiGrab}
                 yelpGrabs={this.state.yelpGrabs}
                 clearYelpGrabs={this.clearYelpGrabs}
+                addToLocations={this.addToLocations}
               />
             )}
           />

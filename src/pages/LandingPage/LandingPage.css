@@ -9,7 +9,7 @@
   display: flex !important;
   justify-content: space-between !important;
   margin-top: 20px;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
 }
 
 .syncButton {
@@ -33,6 +33,24 @@
   to {
     transform: rotate(359deg);
   }
+}
+
+.yelpCard {
+  margin-bottom: 0 !important;
+}
+
+.addCard {
+  margin-top: 0 !important;
+}
+
+.addCardContent {
+  display: flex;
+  flex-direction: row-reverse;
+  font-weight: 900;
+}
+
+.addCard:hover {
+  text-decoration: none !important;
 }
 
 @media only screen and (max-width: 600px) {

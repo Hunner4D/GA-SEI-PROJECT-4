@@ -1,8 +1,8 @@
-import React, { createRef } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "./NavBar.css";
 // import FGlogo from "../../../public/FGlogo";
-import { Form, Image, Sticky, Button } from "semantic-ui-react";
+import { Form, Image, Button } from "semantic-ui-react";
 import logo from "../../assets/logo.png";
 
 class NavBar extends React.Component {
@@ -61,7 +61,7 @@ class NavBar extends React.Component {
             {this.responsiveNav()}
           </div>
         </div>
-        {/* SUB NAV BAR HERE */}
+        {/* SUB NAV BAR BELOW */}
 
         <div className="ui attached stackable menu">
           <div className="ui container subNav">
@@ -69,7 +69,7 @@ class NavBar extends React.Component {
               <i className="home icon"></i> Home
             </Link>
             <Link to="/locations" className="item">
-              <i className="grid layout icon"></i> Browse
+              <i className="grid layout icon"></i> Locations
             </Link>
             <Link to="/messages" className="item">
               <i className="mail icon"></i> Messages

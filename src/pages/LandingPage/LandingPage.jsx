@@ -47,17 +47,34 @@ const LandingPage = (props) => {
     let categories = [];
     item.categories.forEach((e) => categories.push(e.title));
 
+    let addCardContent = <span className="addCardContent">+</span>;
+
     return (
-      <Card
-        fluid
-        color="yellow"
-        header={item.name}
-        meta={`Rating: ${item.rating}, Price: ${item.price}`}
-        description={categories.join(", ")}
-        key={item.id}
-        href={`http://www.google.com/search?q=${item.alias.replace(/-/g, " ")}`}
-        target="_blank"
-      />
+      <Container style={{ marginBottom: 40 }} key={item.name}>
+        <Card
+          fluid
+          color="yellow"
+          header={item.name}
+          meta={`Rating: ${item.rating}, Price: ${item.price}`}
+          description={categories.join(", ")}
+          key={item.id}
+          href={`http://www.google.com/search?q=${item.alias.replace(
+            /-/g,
+            " "
+          )}`}
+          target="_blank"
+          extra={`${item.location.address1}, ${item.location.city}, ${item.location.zip_code}`}
+          className="yelpCard"
+        />
+        <Card
+          fluid
+          className="addCard"
+          header={addCardContent}
+          href={`#`}
+          key={item.alias}
+          onClick={() => props.addToLocations(item)}
+        />
+      </Container>
     );
   });
 

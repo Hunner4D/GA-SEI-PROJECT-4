@@ -4,13 +4,7 @@ const bcrypt = require("bcrypt");
 const SALT_ROUNDS = 6;
 
 const locationSchema = new mongoose.Schema({
-  id: String,
-  name: String,
-  rating: Number,
-  price: String,
-  categories: Array,
-  address: Object,
-  phone: String,
+  location: Object,
 });
 
 const userSchema = new mongoose.Schema(
