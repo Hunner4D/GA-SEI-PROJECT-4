@@ -7,7 +7,8 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import SignupPage from "./pages/SignupPage/SignupPage";
 import MessagesPage from "./pages/MessagesPage/MessagesPage";
 import LocationsPage from "./pages/LocationsPage/LocationsPage";
-import { routeToYelp, addLocation } from "./utils/yelpService";
+import { routeToYelp } from "./utils/yelpService";
+import { addLocation } from "./utils/locationService";
 
 class App extends React.Component {
   constructor() {
