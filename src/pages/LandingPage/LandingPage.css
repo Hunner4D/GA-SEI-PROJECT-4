@@ -9,7 +9,7 @@
   display: flex !important;
   justify-content: space-between !important;
   margin-top: 20px;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 
 .syncButton {
@@ -17,13 +17,13 @@
   font-size: 1vw !important;
 }
 
-.homeScreen {
-  margin-top: 15vh;
-}
+/* .homeScreen {
+  margin-top: 5vh;
+} */
 
 .homeScreenImage {
   animation: rotation 4s infinite linear;
-  margin: 10vh auto;
+  margin: 5vh auto;
 }
 
 @keyframes rotation {

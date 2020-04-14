@@ -10,6 +10,7 @@ const LandingPage = (props) => {
     if (props.yelpGrabs.length) return;
     return (
       <Container text textAlign="center" className="homeScreen">
+        <Image src={burger} size="large" className="homeScreenImage" />
         <Header
           as="h1"
           content="Find yourself..."
@@ -38,7 +39,6 @@ const LandingPage = (props) => {
             fontSize: 25,
           }}
         />
-        <Image src={burger} size="large" className="homeScreenImage" />
       </Container>
     );
   };
