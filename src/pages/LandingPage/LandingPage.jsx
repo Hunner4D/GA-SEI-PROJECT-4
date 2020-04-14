@@ -50,7 +50,8 @@ const LandingPage = (props) => {
     let addCardContent = <span className="addCardContent">+</span>;
 
     return (
-      <Container style={{ marginBottom: 40 }} key={item.name}>
+      // <Container fluid style={{ marginBottom: 40 }} key={item.name}>
+      <div className="cardContainer">
         <Card
           fluid
           color="yellow"
@@ -63,7 +64,9 @@ const LandingPage = (props) => {
             " "
           )}`}
           target="_blank"
-          extra={`${item.location.address1}, ${item.location.city}, ${item.location.zip_code}`}
+          extra={`${item.location.address1}, ${item.location.city}, ${
+            item.location.zip_code
+          } ${"                                                     "}`}
           className="yelpCard"
         />
         <Card
@@ -74,7 +77,8 @@ const LandingPage = (props) => {
           key={item.alias}
           onClick={() => props.addToLocations(item)}
         />
-      </Container>
+      </div>
+      // </Container>
     );
   });
 
