@@ -46,24 +46,24 @@ async function getYelpSpecific(req, res) {
     .then((response) => {
       // console.log(response);
       if (response.statusCode === 200) {
-        //below throws error
-        console.log(res.jsonBody.json());
-        const {
-          jsonBody: {
-            name,
-            image_url,
-            is_closed,
-            url,
-            display_phone,
-            location,
-            categories,
-            rating,
-            photos,
-            price,
-            hours,
-          },
-        } = response;
-        return res.json(jsonBody);
+        console.log(response.jsonBody);
+        // const {
+        //   jsonBody: {
+        //     name,
+        //     image_url,
+        //     is_closed,
+        //     url,
+        //     display_phone,
+        //     location,
+        //     categories,
+        //     rating,
+        //     photos,
+        //     price,
+        //     hours,
+        //   },
+        // } = response;
+        return res.json("hellooooo");
+        // return res.json(jsonBody);
         // return res.json({
         //   code: 200,
         //   name,
