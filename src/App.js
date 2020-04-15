@@ -57,7 +57,6 @@ class App extends React.Component {
       lat: this.state.coords.lat,
       long: this.state.coords.long,
     };
-    // console.log("query: ", query);
     const yelpRequest = await routeToYelp(query);
     console.log("logged back to App: ", yelpRequest);
     this.setState({
