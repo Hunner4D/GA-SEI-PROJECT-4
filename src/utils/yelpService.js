@@ -13,3 +13,16 @@ export async function routeToYelp(query) {
   // Probably a duplicate email
   throw new Error("Invalid request to yelp!");
 }
+
+export async function routeToYelpSpecific(query) {
+  //   console.log("hitting yelpService");
+  const res = await fetch(BASE_URL + "getspecific", {
+    method: "POST",
+    headers: new Headers({ "Content-Type": "application/json" }),
+    body: JSON.stringify(query),
+  });
+  // console.log("res status in yelpService: ", res);
+  if (res.ok) return res.json();
+  // Probably a duplicate email
+  throw new Error("Invalid request to yelp!");
+}

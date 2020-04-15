@@ -119,7 +119,7 @@ class SignupForm extends Component {
   }
 
   handleChoice = (boolean) => {
-    console.log(`Chose to be a guru?`, boolean);
+    // console.log(`Chose to be a guru?`, boolean);
     this.setState({
       guru: boolean,
     });

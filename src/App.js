@@ -7,8 +7,8 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import SignupPage from "./pages/SignupPage/SignupPage";
 import MessagesPage from "./pages/MessagesPage/MessagesPage";
 import LocationsPage from "./pages/LocationsPage/LocationsPage";
-import { routeToYelp } from "./utils/yelpService";
-import { addLocation } from "./utils/locationService";
+import { routeToYelp, routeToYelpSpecific } from "./utils/yelpService";
+import * as locationService from "./utils/locationService";
 
 class App extends React.Component {
   constructor() {
@@ -20,6 +20,7 @@ class App extends React.Component {
         long: null,
       },
       yelpGrabs: [],
+      savedLocations: [],
     };
   }
 
@@ -70,8 +71,23 @@ class App extends React.Component {
     });
   };
 
-  addToLocations = (obj) => {
-    console.log(obj);
+  addToLocations = async (obj) => {
+    let query = {
+      user: this.state.user,
+      locId: obj.id,
+    };
+    // console.log(query.locId);
+    const saveLocation = await locationService.addLocation(query);
+    console.log("Response back to website: ", saveLocation);
+    let savedLocationsCopy = [
+      ...this.state.savedLocations,
+      saveLocation[0]._id,
+    ];
+    console.log("saved locations copy", savedLocationsCopy);
+    this.setState({
+      savedLocations: savedLocationsCopy,
+    });
+    console.log("this is state after: ", this.state);
   };
 
   render() {

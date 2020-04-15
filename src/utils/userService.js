@@ -3,7 +3,7 @@ import tokenService from "./tokenService";
 const BASE_URL = "/api/users/";
 
 function signup(user) {
-  console.log("hitting user: ", user);
+  // console.log("hitting user: ", user);
   return (
     fetch(BASE_URL + "signup", {
       method: "POST",
@@ -11,7 +11,7 @@ function signup(user) {
       body: JSON.stringify(user),
     })
       .then((res) => {
-        console.log("this is res: ", res);
+        // console.log("this is res: ", res);
         if (res.ok) return res.json();
         // Probably a duplicate email
         throw new Error("Email already taken!");
