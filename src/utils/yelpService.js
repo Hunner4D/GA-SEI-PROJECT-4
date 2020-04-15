@@ -1,4 +1,4 @@
-const axios = require("axios");
+// const axios = require("axios");
 
 // url to api = "https://api.yelp.com/v3";
 const BASE_URL = "/api/yelp/";

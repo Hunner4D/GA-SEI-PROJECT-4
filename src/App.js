@@ -94,6 +94,7 @@ class App extends React.Component {
     allLocationAlias.map(async (e) => {
       const search = { query: e };
       const location = await routeToYelpSpecific(search);
+      // console.log("location here: ", location);
       locations.push(location);
     });
     return locations;

@@ -21,10 +21,14 @@ class LocationsPage extends React.Component {
     let userLocations = this.state.userLocations;
     console.log("this is userLocations: ", userLocations);
     let addCardContent = <span className="addCardContent">+</span>;
+    // console.log("here", userLocations[1]);
+
+    //// map below
     userLocations.map((e) => {
       console.log("this is e: ", e);
       let categories = [];
       e.categories.forEach((e) => categories.push(e.title));
+      console.log("this is e: ", e);
       return (
         <div className="cardContainer" key={`${e.location.address1}${e.id}`}>
           <Card
