@@ -17,7 +17,7 @@ export async function routeToYelp(query) {
 }
 
 export async function routeToYelpSpecific(query) {
-  console.log("hitting routeToYelpService, query ->", query);
+  // console.log("hitting routeToYelpService, query ->", query);
   // const res = await axios.post(`${BASE_URL}getspecific`, query);
   const res = await fetch(BASE_URL + "getspecific", {
     method: "POST",

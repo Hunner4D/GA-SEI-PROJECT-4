@@ -21,9 +21,12 @@ class LocationsPage extends React.Component {
     let userLocations = this.state.userLocations;
     console.log("this is userLocations: ", userLocations);
     let addCardContent = <span className="addCardContent">+</span>;
-    // console.log("here", userLocations[1]);
-
-    //// map below
+    // console.log("user location at index 0", userLocations[0]);
+    console.log("length", userLocations.length);
+    console.log("is array", Array.isArray(userLocations));
+    //
+    //
+    //// map jargon below
     userLocations.map((e) => {
       console.log("this is e: ", e);
       let categories = [];
