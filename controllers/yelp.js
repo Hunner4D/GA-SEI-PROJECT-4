@@ -46,6 +46,7 @@ async function getYelpSpecific(req, res) {
     .then((response) => {
       console.log(response);
       if (response.statusCode === 200) {
+        console.log(res.json().jsonBody);
         const {
           jsonBody: {
             name,
@@ -61,21 +62,21 @@ async function getYelpSpecific(req, res) {
             hours,
           },
         } = response;
-        // return res.send({
-        return res.json({
-          code: 200,
-          name,
-          image_url,
-          is_closed,
-          url,
-          display_phone,
-          location,
-          categories,
-          rating,
-          photos,
-          price,
-          hours,
-        });
+        return res.json(jsonBody);
+        // return res.json({
+        //   code: 200,
+        //   name,
+        //   image_url,
+        //   is_closed,
+        //   url,
+        //   display_phone,
+        //   location,
+        //   categories,
+        //   rating,
+        //   photos,
+        //   price,
+        //   hours,
+        // });
       }
       return res.send({ code: 500, message: "Something went wrong..." });
     })
