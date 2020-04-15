@@ -61,7 +61,8 @@ async function getYelpSpecific(req, res) {
             hours,
           },
         } = response;
-        return res.send({
+        // return res.send({
+        return res.json({
           code: 200,
           name,
           image_url,
