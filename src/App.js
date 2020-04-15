@@ -74,20 +74,30 @@ class App extends React.Component {
   addToLocations = async (obj) => {
     let query = {
       user: this.state.user,
-      locId: obj.id,
+      locAlias: obj.alias,
     };
-    // console.log(query.locId);
-    const saveLocation = await locationService.addLocation(query);
-    console.log("Response back to website: ", saveLocation);
-    let savedLocationsCopy = [
-      ...this.state.savedLocations,
-      saveLocation[0]._id,
-    ];
-    console.log("saved locations copy", savedLocationsCopy);
+    const updatedUser = await locationService.addLocation(query);
+    // console.log("Response back to website: ", updatedUser);
     this.setState({
-      savedLocations: savedLocationsCopy,
+      user: updatedUser,
     });
-    console.log("this is state after: ", this.state);
+    // console.log("current state: ", this.state);
+  };
+
+  showAllLocations = async () => {
+    if (!this.state.user) return;
+    const allLocationAlias = await locationService.allLocations(
+      this.state.user
+    );
+    //transform location alias' into entire objects through api grab
+    // and store them into array below
+    let locations = [];
+    allLocationAlias.map(async (e) => {
+      const search = { query: e };
+      const location = await routeToYelpSpecific(search);
+      locations.push(location);
+    });
+    return locations;
   };
 
   render() {
@@ -150,6 +160,7 @@ class App extends React.Component {
                 history={history}
                 user={this.state.user}
                 handleLogout={this.handleLogout}
+                showAllLocations={this.showAllLocations}
               />
             )}
           />

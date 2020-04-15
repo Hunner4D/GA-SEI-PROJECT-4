@@ -37,6 +37,7 @@ const LandingPage = (props) => {
           style={{
             fontWeight: "normal",
             fontSize: 25,
+            marginBottom: 25,
           }}
         />
       </Container>
@@ -50,7 +51,10 @@ const LandingPage = (props) => {
     let addCardContent = <span className="addCardContent">+</span>;
 
     return (
-      <div className="cardContainer" key={item.name}>
+      <div
+        className="cardContainer"
+        key={`${item.location.address1}${item.id}`}
+      >
         <Card
           fluid
           color="yellow"

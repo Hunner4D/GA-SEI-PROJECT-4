@@ -6,6 +6,7 @@ module.exports = {
   getYelp,
   getYelpSpecific,
   addLocation,
+  getLocations,
 };
 
 async function getYelp(req, res) {
@@ -39,18 +40,43 @@ async function getYelpSpecific(req, res) {
   // Place holder for Yelp Fusion's API Key. Grab them
   // from https://www.yelp.com/developers/v3/manage_app
   const apiKey = YELPSECRET;
-  const searchRequest = {
-    locale: req.body.localeId,
-  };
   const client = yelp.client(apiKey);
   client
-    .business(searchRequest)
+    .business(req.body.query)
     .then((response) => {
-      const Result = response.jsonBody.businesses;
-      //   const Result = response.jsonBody;
-      const prettyJson = JSON.stringify(Result, null, 4);
-      const prettyObj = JSON.parse(prettyJson);
-      res.json(prettyObj);
+      console.log(response);
+      if (response.statusCode === 200) {
+        const {
+          jsonBody: {
+            name,
+            image_url,
+            is_closed,
+            url,
+            display_phone,
+            location,
+            categories,
+            rating,
+            photos,
+            price,
+            hours,
+          },
+        } = response;
+        return res.send({
+          code: 200,
+          name,
+          image_url,
+          is_closed,
+          url,
+          display_phone,
+          location,
+          categories,
+          rating,
+          photos,
+          price,
+          hours,
+        });
+      }
+      return res.send({ code: 500, message: "Something went wrong..." });
     })
     .catch((e) => {
       console.log("error dude: ", e);
@@ -58,24 +84,31 @@ async function getYelpSpecific(req, res) {
 }
 
 async function addLocation(req, res) {
-  console.log("req body for addLocation", req.body);
-  let user = await User.findOne({ email: req.body.user.email })
-    .then((u) => {
-      // u.savedLocations = [];
-      console.log("this is u:", u);
-      u.savedLocations.push(req.body.locId);
-      console.log("this is u after:", u);
-      u.save();
-      return u.savedLocations;
-    })
-    .then((r) => {
-      console.log("result: ", r);
-      res.status(201).json(r);
+  // console.log("req body for addLocation", req.body);
+  await User.findOne({ email: req.body.user.email }).exec((err, user) => {
+    const previouslySaved = user.savedLocations;
+    user.savedLocations = [...previouslySaved, req.body.locAlias];
+    // user.markModified("savedLocations"); - would use this if nested schema was still a thing
+    user.save((err) => {
+      if (err) {
+        console.log("***");
+        console.error(err);
+        console.log("***");
+        return res.status(500);
+      }
+      res.status(201).json(user);
     });
+  });
+}
 
-  // console.log("this is user", user);
-  // user.savedLocations.push(req.body.location);
-  // console.log("this is saved location", user.savedLocations);
-  // await user.save();
-  // res.status(201).json(req.body.location);
+async function getLocations(req, res) {
+  console.log("Coming from getLocations, req.body -> ", req.body);
+  await User.findOne({ email: req.body.email }).exec((err, user) => {
+    const allLocations = user.savedLocations;
+    if (err) {
+      console.log("Error from getLocations", err);
+      return res.status(500);
+    }
+    res.status(201).json(allLocations);
+  });
 }
