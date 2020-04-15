@@ -5,10 +5,57 @@ import { Card, Header, Container } from "semantic-ui-react";
 import "./LocationsPage.css";
 
 class LocationsPage extends React.Component {
+  state = {
+    userLocations: [],
+  };
+
   async componentDidMount() {
     let locations = await this.props.showAllLocations();
-    console.log(locations);
+    // console.log(locations);
+    this.setState({
+      userLocations: locations,
+    });
   }
+
+  listUserLocations = () => {
+    let userLocations = this.state.userLocations;
+    console.log("this is userLocations: ", userLocations);
+    let addCardContent = <span className="addCardContent">+</span>;
+    userLocations.map((e) => {
+      console.log("this is e: ", e);
+      let categories = [];
+      e.categories.forEach((e) => categories.push(e.title));
+      return (
+        <div className="cardContainer" key={`${e.location.address1}${e.id}`}>
+          <Card
+            fluid
+            color="yellow"
+            header={e.name}
+            meta={`Rating: ${e.rating}, Price: ${e.price}`}
+            description={categories.join(", ")}
+            key={e.id}
+            href={`http://www.google.com/search?q=${e.alias.replace(
+              /-/g,
+              " "
+            )}`}
+            target="_blank"
+            extra={`${e.location.address1}, ${e.location.city}, ${
+              e.location.zip_code
+            } ${"                                                     "}`}
+            // className="yelpCard"
+          />
+          <Card
+            fluid
+            // className="addCard"
+            header={addCardContent}
+            href={`#`}
+            key={e.alias}
+            // onClick={() => props.addToLocations(e)}
+          />
+        </div>
+      );
+    });
+  };
 
   render() {
     return (
@@ -35,7 +82,7 @@ class LocationsPage extends React.Component {
               }}
             />
           </Container>
-          <Card.Group>{}</Card.Group>
+          <Card.Group>{this.listUserLocations()}</Card.Group>
         </div>
       </div>
     );
