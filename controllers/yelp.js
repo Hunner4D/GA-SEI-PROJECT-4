@@ -46,7 +46,7 @@ async function getYelpSpecific(req, res) {
     .then((response) => {
       console.log(response);
       if (response.statusCode === 200) {
-        console.log(res.json().jsonBody);
+        console.log(res.json());
         const {
           jsonBody: {
             name,
