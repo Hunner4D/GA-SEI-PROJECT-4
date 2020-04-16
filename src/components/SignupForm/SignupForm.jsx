@@ -11,6 +11,7 @@ import {
   Segment,
 } from "semantic-ui-react";
 import "./SignupForm.css";
+import logo from "../../assets/logo.png";
 
 class SignupForm extends Component {
   state = {
@@ -135,7 +136,7 @@ class SignupForm extends Component {
         >
           <Grid.Column style={{ maxWidth: 450 }}>
             <Header as="h2" color="teal" textAlign="center">
-              <Image src="/logo.png" /> Sign Up with Food Guru
+              <Image src={logo} /> Sign Up with Food Guru
             </Header>
             <Form size="large" onSubmit={this.handleSubmit}>
               <Segment stacked>

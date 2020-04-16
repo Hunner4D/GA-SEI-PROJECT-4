@@ -34,11 +34,20 @@ class App extends React.Component {
 
   handleLogout = () => {
     userService.logout();
-    this.setState({ user: null });
+    this.setState({
+      user: null,
+      savedLocationsObjs: [],
+    });
   };
 
-  handleSignupOrLogin = () => {
-    this.setState({ user: userService.getUser() });
+  handleSignupOrLogin = async () => {
+    this.setState({
+      user: userService.getUser(),
+    });
+    const locationsObjs = await this.showAllLocations();
+    this.setState({
+      savedLocationsObjs: locationsObjs,
+    });
   };
 
   syncLocation = () => {
@@ -90,7 +99,9 @@ class App extends React.Component {
   };
 
   showAllLocations = async () => {
-    if (!this.state.user) return;
+    if (!this.state.user) {
+      return [];
+    }
     const allLocationAlias = await locationService.allLocations(
       this.state.user
     );

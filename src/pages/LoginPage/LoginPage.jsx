@@ -11,6 +11,7 @@ import {
   Segment,
 } from "semantic-ui-react";
 import userService from "../../utils/userService";
+import logo from "../../assets/logo.png";
 
 class LoginPage extends Component {
   state = {
@@ -51,7 +52,7 @@ class LoginPage extends Component {
         >
           <Grid.Column style={{ maxWidth: 450, maxHeight: 700 }}>
             <Header as="h2" color="teal" textAlign="center">
-              <Image src="/logo.png" /> Log-in to your account
+              <Image src={logo} /> Log-in to your account
             </Header>
             <Form size="large" onSubmit={this.handleSubmit}>
               <Segment stacked>
