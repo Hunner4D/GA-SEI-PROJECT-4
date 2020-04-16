@@ -26,7 +26,7 @@ class LocationsPage extends React.Component {
               style={{
                 fontWeight: "normal",
                 marginTop: 80,
-                marginBottom: 40,
+                marginBottom: 70,
                 fontSize: 30,
               }}
             />

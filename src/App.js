@@ -27,7 +27,6 @@ class App extends React.Component {
 
   async componentDidMount() {
     const locationsObjs = await this.showAllLocations();
-    console.log(locationsObjs);
     this.setState({
       savedLocationsObjs: locationsObjs,
     });
@@ -85,11 +84,9 @@ class App extends React.Component {
       locAlias: obj.alias,
     };
     const updatedUser = await locationService.addLocation(query);
-    // console.log("Response back to website: ", updatedUser);
     this.setState({
       user: updatedUser,
     });
-    // console.log("current state: ", this.state);
   };
 
   showAllLocations = async () => {
@@ -97,16 +94,13 @@ class App extends React.Component {
     const allLocationAlias = await locationService.allLocations(
       this.state.user
     );
-    console.log("return val of allLocationsAlias:", allLocationAlias);
     //transform location alias' into entire objects through api grab
     // and store them into array below
     const allLocations = allLocationAlias.map((e) => {
       const search = { query: e };
       return routeToYelpSpecific(search);
     });
-    console.log(allLocations);
     const locations = await Promise.all(allLocations);
-    console.log(locations);
     return locations;
   };
 

@@ -1,35 +1,49 @@
 import React from "react";
-import NavBar from "../../components/NavBar/NavBar";
-import { Card, Header, Container, Image } from "semantic-ui-react";
-import burger from "../../assets/burger.png";
+import { Card } from "semantic-ui-react";
+import "./listSavedLocations.css";
 
 // import "./LandingPage.css";
 
 const ListSavedLocations = (props) => {
-  const allLocations = props.savedLocationsObjs.map((location) => {
-    console.log("this is location: ", location);
-    // let categories = [];
-    // e.categories.forEach((e) => categories.push(e.title));
-    // console.log("this is e: ", e);
+  const allLocations = props.savedLocationsObjs.map((item) => {
+    let addCardContent = <span className="addCardContent">X</span>;
+    let categories = [];
+    item.categories.forEach((e) => categories.push(e.title));
     return (
       <div
         className="cardContainer"
-        key={`${location.location.address1}${location.id}`}
+        key={`${item.location.address1}${item.id}`}
       >
-        <Card fluid color="yellow" header={location.name} />
         <Card
           fluid
-          // className="addCard"
-          //   header={addCardContent}
+          color="yellow"
+          header={item.name}
+          meta={`Rating: ${item.rating}, Price: ${item.price}`}
+          description={categories.join(", ")}
+          key={item.id}
+          href={`http://www.google.com/search?q=${item.alias.replace(
+            /-/g,
+            " "
+          )}`}
+          target="_blank"
+          extra={`${item.location.address1}, ${item.location.city}, ${
+            item.location.zip_code
+          } ${"                                                     "}`}
+          className="yelpCard"
+        />
+        <Card
+          fluid
+          className="addCard"
+          header={addCardContent}
           href={`#`}
-          key={location.alias}
-          // onClick={() => props.addToLocations(e)}
+          key={item.alias}
+          onClick={() => props.addToLocations(item)}
         />
       </div>
     );
   });
 
-  return <div>{allLocations}</div>;
+  return <div className="cardContainer">{allLocations}</div>;
 };
 
 export default ListSavedLocations;
