@@ -6,6 +6,16 @@ import ListSavedLocations from "../../components/listSavedLocations/listSavedLoc
 import "./LocationsPage.css";
 
 class LocationsPage extends React.Component {
+  displayPageHeader = () => {
+    let pageheader = "";
+    if (this.props.user) {
+      pageheader = "your saved locations:";
+    } else {
+      pageheader = "login to save locations:";
+    }
+    return pageheader;
+  };
+
   render() {
     return (
       <div className="LocationsPage">
@@ -21,7 +31,7 @@ class LocationsPage extends React.Component {
           <Container text textAlign="center" className="homeScreen">
             <Header
               as="h5"
-              content="your saved locations:"
+              content={this.displayPageHeader()}
               inverted
               style={{
                 fontWeight: "normal",
@@ -34,6 +44,7 @@ class LocationsPage extends React.Component {
           <Card.Group>
             <ListSavedLocations
               savedLocationsObjs={this.props.savedLocationsObjs}
+              user={this.props.user}
             />
           </Card.Group>
         </div>
