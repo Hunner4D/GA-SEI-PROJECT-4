@@ -1,69 +1,11 @@
 import React from "react";
 import NavBar from "../../components/NavBar/NavBar";
 import { Card, Header, Container } from "semantic-ui-react";
+import ListSavedLocations from "../../components/listSavedLocations/listSavedLocations";
 
 import "./LocationsPage.css";
 
 class LocationsPage extends React.Component {
-  state = {
-    userLocations: [],
-  };
-
-  async componentDidMount() {
-    let locations = await this.props.showAllLocations();
-    // console.log(locations);
-    this.setState({
-      userLocations: locations,
-    });
-  }
-
-  listUserLocations = () => {
-    let userLocations = this.state.userLocations;
-    console.log("this is userLocations: ", userLocations);
-    let addCardContent = <span className="addCardContent">+</span>;
-    // console.log("user location at index 0", userLocations[0]);
-    console.log("length", userLocations.length);
-    console.log("is array", Array.isArray(userLocations));
-    //
-    //
-    //// map jargon below
-    userLocations.map((e) => {
-      console.log("this is e: ", e);
-      let categories = [];
-      e.categories.forEach((e) => categories.push(e.title));
-      console.log("this is e: ", e);
-      return (
-        <div className="cardContainer" key={`${e.location.address1}${e.id}`}>
-          <Card
-            fluid
-            color="yellow"
-            header={e.name}
-            meta={`Rating: ${e.rating}, Price: ${e.price}`}
-            description={categories.join(", ")}
-            key={e.id}
-            href={`http://www.google.com/search?q=${e.alias.replace(
-              /-/g,
-              " "
-            )}`}
-            target="_blank"
-            extra={`${e.location.address1}, ${e.location.city}, ${
-              e.location.zip_code
-            } ${"                                                     "}`}
-            // className="yelpCard"
-          />
-          <Card
-            fluid
-            // className="addCard"
-            header={addCardContent}
-            href={`#`}
-            key={e.alias}
-            // onClick={() => props.addToLocations(e)}
-          />
-        </div>
-      );
-    });
-  };
-
   render() {
     return (
       <div className="LocationsPage">
@@ -89,7 +31,11 @@ class LocationsPage extends React.Component {
               }}
             />
           </Container>
-          <Card.Group>{this.listUserLocations()}</Card.Group>
+          <Card.Group>
+            <ListSavedLocations
+              savedLocationsObjs={this.props.savedLocationsObjs}
+            />
+          </Card.Group>
         </div>
       </div>
     );

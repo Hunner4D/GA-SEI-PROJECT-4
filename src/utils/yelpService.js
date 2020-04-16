@@ -25,7 +25,10 @@ export async function routeToYelpSpecific(query) {
     body: JSON.stringify(query),
   });
   // console.log("res status in yelpService: ", res);
-  if (res.ok) return res.json();
+  if (res.ok) {
+    // console.log("yelpSpecific return", res);
+    return res.json();
+  }
   // Probably a duplicate email
   throw new Error("Invalid request to yelp!");
 }
