@@ -93,6 +93,10 @@ class NavBar extends React.Component {
               <div className="ui input">
                 <Form
                   onSubmit={() => {
+                    if (this.props.lat === null) {
+                      alert("Sync Location to find local Gurb!");
+                      return;
+                    }
                     this.props.history.push("/");
                     this.handleSearchSubmit();
                   }}

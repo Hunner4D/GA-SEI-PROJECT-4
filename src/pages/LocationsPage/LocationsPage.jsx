@@ -26,6 +26,7 @@ class LocationsPage extends React.Component {
           apiGrab={this.props.apiGrab}
           clearYelpGrabs={this.props.clearYelpGrabs}
           history={this.props.history}
+          lat={this.props.lat}
         />
 
         <div className="ui container LPbody">

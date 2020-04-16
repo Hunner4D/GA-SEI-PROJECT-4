@@ -32,6 +32,25 @@ class App extends React.Component {
     });
   }
 
+  // const locationsObjsPromises = await this.showAllLocations();
+  //   const locationsObjs = await Promise.all(locationsObjsPromises);
+  //   this.setState({
+  //     savedLocationsObjs: locationsObjs,
+  //   });
+
+  // const locationsObjs = await this.showAllLocations();
+  // this.setState({
+  //   savedLocationsObjs: locationsObjs,
+  // });
+
+  async componentDidUpdate() {
+    const locationsObjsPromises = await this.showAllLocations();
+    const locationsObjs = await Promise.all(locationsObjsPromises);
+    this.setState({
+      savedLocationsObjs: locationsObjs,
+    });
+  }
+
   handleLogout = () => {
     userService.logout();
     this.setState({
@@ -102,16 +121,17 @@ class App extends React.Component {
   };
 
   deleteFromLocations = async (obj) => {
+    // history.push("/");
     let query = {
       user: this.state.user,
       locAlias: obj.alias,
     };
     const updatedUserLocations = await locationService.deleteLocation(query);
-    console.log(updatedUserLocations);
     this.setState({
       user: updatedUserLocations,
       savedLocations: updatedUserLocations.savedLocations,
     });
+    // history.push("/locations");
   };
 
   showAllLocations = async () => {
@@ -149,6 +169,7 @@ class App extends React.Component {
                 yelpGrabs={this.state.yelpGrabs}
                 clearYelpGrabs={this.clearYelpGrabs}
                 addToLocations={this.addToLocations}
+                lat={this.state.coords.lat}
               />
             )}
           />
@@ -183,6 +204,7 @@ class App extends React.Component {
                 handleLogout={this.handleLogout}
                 syncLocation={this.syncLocation}
                 apiGrab={this.apiGrab}
+                lat={this.state.coords.lat}
               />
             )}
           />
@@ -198,6 +220,7 @@ class App extends React.Component {
                 deleteFromLocations={this.deleteFromLocations}
                 syncLocation={this.syncLocation}
                 apiGrab={this.apiGrab}
+                lat={this.state.coords.lat}
               />
             )}
           />

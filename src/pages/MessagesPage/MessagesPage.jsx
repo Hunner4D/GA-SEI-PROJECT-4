@@ -14,6 +14,7 @@ const MessagesPage = (props) => {
         apiGrab={props.apiGrab}
         clearYelpGrabs={props.clearYelpGrabs}
         history={props.history}
+        lat={props.lat}
       />
 
       <div className="ui container LPbody">

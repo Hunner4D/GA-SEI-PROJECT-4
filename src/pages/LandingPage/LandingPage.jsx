@@ -76,7 +76,7 @@ const LandingPage = (props) => {
           fluid
           className="addCard"
           header={addCardContent}
-          href={`#`}
+          type="submit"
           key={item.alias}
           onClick={() => props.addToLocations(item)}
         />
@@ -93,6 +93,7 @@ const LandingPage = (props) => {
         handleLogout={props.handleLogout}
         apiGrab={props.apiGrab}
         clearYelpGrabs={props.clearYelpGrabs}
+        lat={props.lat}
       />
 
       <div className="ui container LPbody">

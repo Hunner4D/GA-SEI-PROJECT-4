@@ -35,7 +35,7 @@ const ListSavedLocations = (props) => {
           fluid
           className="addCard"
           header={addCardContent}
-          href={`#`}
+          type="submit"
           key={item.alias}
           onClick={() => props.deleteFromLocations(item)}
         />
