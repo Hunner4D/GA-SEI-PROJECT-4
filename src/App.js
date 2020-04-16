@@ -97,6 +97,7 @@ class App extends React.Component {
     const updatedUserLocations = await locationService.addLocation(query);
     this.setState({
       user: updatedUserLocations,
+      savedLocations: updatedUserLocations.savedLocations,
     });
   };
 
@@ -106,8 +107,10 @@ class App extends React.Component {
       locAlias: obj.alias,
     };
     const updatedUserLocations = await locationService.deleteLocation(query);
+    console.log(updatedUserLocations);
     this.setState({
       user: updatedUserLocations,
+      savedLocations: updatedUserLocations.savedLocations,
     });
   };
 
