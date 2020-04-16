@@ -87,6 +87,7 @@ const LandingPage = (props) => {
   return (
     <div className="LandingPage">
       <NavBar
+        history={props.history}
         user={props.user}
         handleSignupOrLogin={props.handleSignupOrLogin}
         handleLogout={props.handleLogout}

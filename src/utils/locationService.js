@@ -9,7 +9,24 @@ export function addLocation(query) {
   }).then((res) => {
     // console.log("this is res from locationService", res);
     if (res.ok) return res.json();
-    throw new Error("Add Location Failed! Check locationService path");
+    throw new Error(
+      "Add Location Failed! Check locationService.addLocation path"
+    );
+  });
+}
+
+export function deleteLocation(query) {
+  // console.log("hitting add location");
+  return fetch(BASE_URL + "deletelocation", {
+    method: "POST",
+    headers: new Headers({ "Content-Type": "application/json" }),
+    body: JSON.stringify(query),
+  }).then((res) => {
+    // console.log("this is res from locationService", res);
+    if (res.ok) return res.json();
+    throw new Error(
+      "Add Location Failed! Check locationService.deleteLocation path"
+    );
   });
 }
 

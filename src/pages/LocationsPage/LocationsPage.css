@@ -4,3 +4,10 @@
   border: 1vw solid white;
   border-top: 0;
 }
+
+.flexButtons {
+  display: flex !important;
+  justify-content: space-between !important;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}

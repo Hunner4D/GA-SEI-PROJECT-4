@@ -6,6 +6,7 @@ module.exports = {
   getYelp,
   getYelpSpecific,
   addLocation,
+  deleteLocation,
   getLocations,
 };
 
@@ -62,6 +63,24 @@ async function addLocation(req, res) {
     const previouslySaved = user.savedLocations;
     user.savedLocations = [...previouslySaved, req.body.locAlias];
     // user.markModified("savedLocations"); - would use this if nested schema was still a thing
+    user.save((err) => {
+      if (err) {
+        console.log("***");
+        console.error(err);
+        console.log("***");
+        return res.status(500);
+      }
+      res.status(201).json(user);
+    });
+  });
+}
+
+async function deleteLocation(req, res) {
+  await User.findOne({ email: req.body.user.email }).exec((err, user) => {
+    const previouslySaved = user.savedLocations;
+    const index = previouslySaved.indexOf(req.body.locAlias);
+    previouslySaved.splice(index, 1);
+    user.savedLocations = [...previouslySaved];
     user.save((err) => {
       if (err) {
         console.log("***");

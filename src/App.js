@@ -69,13 +69,15 @@ class App extends React.Component {
       alert("Sync Location to find local Gurb!");
       return;
     }
+    this.setState({
+      yelpGrabs: [],
+    });
     let query = {
       term: term,
       lat: this.state.coords.lat,
       long: this.state.coords.long,
     };
     const yelpRequest = await routeToYelp(query);
-    console.log("logged back to App: ", yelpRequest);
     this.setState({
       yelpGrabs: yelpRequest,
     });
@@ -92,9 +94,20 @@ class App extends React.Component {
       user: this.state.user,
       locAlias: obj.alias,
     };
-    const updatedUser = await locationService.addLocation(query);
+    const updatedUserLocations = await locationService.addLocation(query);
     this.setState({
-      user: updatedUser,
+      user: updatedUserLocations,
+    });
+  };
+
+  deleteFromLocations = async (obj) => {
+    let query = {
+      user: this.state.user,
+      locAlias: obj.alias,
+    };
+    const updatedUserLocations = await locationService.deleteLocation(query);
+    this.setState({
+      user: updatedUserLocations,
     });
   };
 
@@ -122,8 +135,9 @@ class App extends React.Component {
           <Route
             exact
             path="/"
-            render={() => (
+            render={({ history }) => (
               <LandingPage
+                history={history}
                 user={this.state.user}
                 handleSignupOrLogin={this.handleSignupOrLogin}
                 handleLogout={this.handleLogout}
@@ -164,6 +178,8 @@ class App extends React.Component {
                 history={history}
                 user={this.state.user}
                 handleLogout={this.handleLogout}
+                syncLocation={this.syncLocation}
+                apiGrab={this.apiGrab}
               />
             )}
           />
@@ -176,6 +192,9 @@ class App extends React.Component {
                 user={this.state.user}
                 handleLogout={this.handleLogout}
                 savedLocationsObjs={this.state.savedLocationsObjs}
+                deleteFromLocations={this.deleteFromLocations}
+                syncLocation={this.syncLocation}
+                apiGrab={this.apiGrab}
               />
             )}
           />

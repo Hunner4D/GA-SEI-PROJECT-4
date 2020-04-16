@@ -37,7 +37,7 @@ const ListSavedLocations = (props) => {
           header={addCardContent}
           href={`#`}
           key={item.alias}
-          onClick={() => props.addToLocations(item)}
+          onClick={() => props.deleteFromLocations(item)}
         />
       </div>
     );

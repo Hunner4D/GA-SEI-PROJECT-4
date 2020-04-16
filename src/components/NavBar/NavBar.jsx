@@ -91,7 +91,13 @@ class NavBar extends React.Component {
             </div>
             <div className="right item">
               <div className="ui input">
-                <Form onSubmit={this.handleSearchSubmit} className="searchForm">
+                <Form
+                  onSubmit={() => {
+                    this.props.history.push("/");
+                    this.handleSearchSubmit();
+                  }}
+                  className="searchForm"
+                >
                   <Form.Input
                     className="navInput"
                     name="term"

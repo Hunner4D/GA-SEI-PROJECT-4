@@ -25,9 +25,21 @@ class LocationsPage extends React.Component {
           handleLogout={this.props.handleLogout}
           apiGrab={this.props.apiGrab}
           clearYelpGrabs={this.props.clearYelpGrabs}
+          history={this.props.history}
         />
 
         <div className="ui container LPbody">
+          <div className="flexButtons">
+            <button
+              className="ui segment syncButton"
+              onClick={this.props.syncLocation}
+            >
+              Sync Location
+            </button>
+            <button className="ui segment syncButton">
+              Connect with a Guru!
+            </button>
+          </div>
           <Container text textAlign="center" className="homeScreen">
             <Header
               as="h5"
@@ -35,7 +47,6 @@ class LocationsPage extends React.Component {
               inverted
               style={{
                 fontWeight: "normal",
-                marginTop: 80,
                 marginBottom: 70,
                 fontSize: 30,
               }}
@@ -45,6 +56,7 @@ class LocationsPage extends React.Component {
             <ListSavedLocations
               savedLocationsObjs={this.props.savedLocationsObjs}
               user={this.props.user}
+              deleteFromLocations={this.props.deleteFromLocations}
             />
           </Card.Group>
         </div>
