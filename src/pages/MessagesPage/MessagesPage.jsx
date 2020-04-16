@@ -1,6 +1,6 @@
 import React from "react";
 import NavBar from "../../components/NavBar/NavBar";
-// import { Card, Header, Container, Image } from "semantic-ui-react";
+import { Header } from "semantic-ui-react";
 
 import "./MessagesPage.css";
 
@@ -15,7 +15,20 @@ const MessagesPage = (props) => {
         clearYelpGrabs={props.clearYelpGrabs}
       />
 
-      <div className="ui container LPbody"></div>
+      <div className="ui container LPbody">
+        <Header
+          as="h5"
+          content="under construction!"
+          inverted
+          style={{
+            fontWeight: "normal",
+            marginTop: 80,
+            marginBottom: 70,
+            fontSize: 15,
+            textAlign: "center",
+          }}
+        />
+      </div>
     </div>
   );
 };
