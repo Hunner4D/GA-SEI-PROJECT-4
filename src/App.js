@@ -9,6 +9,7 @@ import MessagesPage from "./pages/MessagesPage/MessagesPage";
 import LocationsPage from "./pages/LocationsPage/LocationsPage";
 import { routeToYelp, routeToYelpSpecific } from "./utils/yelpService";
 import * as locationService from "./utils/locationService";
+// import history from "./history";
 
 class App extends React.Component {
   constructor() {
@@ -126,12 +127,12 @@ class App extends React.Component {
       user: this.state.user,
       locAlias: obj.alias,
     };
+    // history.push("/locations");
     const updatedUserLocations = await locationService.deleteLocation(query);
     this.setState({
       user: updatedUserLocations,
       savedLocations: updatedUserLocations.savedLocations,
     });
-    // history.push("/locations");
   };
 
   showAllLocations = async () => {
