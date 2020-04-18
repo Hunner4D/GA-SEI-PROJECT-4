@@ -10,6 +10,7 @@ module.exports = {
   getLocations,
 };
 
+// when page loads and user makes search request we make this call to get all places
 async function getYelp(req, res) {
   console.log("hitting controller. term: ", req.body);
   // Place holder for Yelp Fusion's API Key. Grab them
@@ -61,7 +62,7 @@ async function addLocation(req, res) {
   // console.log("req body for addLocation", req.body);
   await User.findOne({ email: req.body.user.email }).exec((err, user) => {
     const previouslySaved = user.savedLocations;
-    user.savedLocations = [...previouslySaved, req.body.locAlias];
+    user.savedLocations = [...previouslySaved, req.body.locationAdded];
     // user.markModified("savedLocations"); - would use this if nested schema was still a thing
     user.save((err) => {
       if (err) {
@@ -77,10 +78,14 @@ async function addLocation(req, res) {
 
 async function deleteLocation(req, res) {
   await User.findOne({ email: req.body.user.email }).exec((err, user) => {
+    const {
+      body: { locationRemoved: { id: locationId = "" } = {} } = {},
+    } = req;
     const previouslySaved = user.savedLocations;
-    const index = previouslySaved.indexOf(req.body.locAlias);
-    previouslySaved.splice(index, 1);
-    user.savedLocations = [...previouslySaved];
+    const savedLocations = previouslySaved.filter(
+      ({ id }) => id !== locationId
+    );
+    user.savedLocations = savedLocations;
     user.save((err) => {
       if (err) {
         console.log("***");

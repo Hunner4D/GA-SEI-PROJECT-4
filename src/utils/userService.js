@@ -1,4 +1,5 @@
 import tokenService from "./tokenService";
+import axios from "axios";
 
 const BASE_URL = "/api/users/";
 
@@ -27,6 +28,16 @@ function getUser() {
   return tokenService.getUserFromToken();
 }
 
+async function getUserByEmail(email) {
+  try {
+    const { data } = await axios.post(`${BASE_URL}getByEmail`, { email });
+    return data;
+  } catch (err) {
+    console.error(err);
+    return;
+  }
+}
+
 function logout() {
   tokenService.removeToken();
 }
@@ -50,4 +61,5 @@ export default {
   getUser,
   logout,
   login,
+  getUserByEmail,
 };

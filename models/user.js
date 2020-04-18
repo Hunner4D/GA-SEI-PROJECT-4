@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema(
     email: { type: String, required: true, lowercase: true, unique: true },
     password: String,
     guru: Boolean,
-    savedLocations: [String],
+    savedLocations: [Object],
   },
   {
     timestamps: true,

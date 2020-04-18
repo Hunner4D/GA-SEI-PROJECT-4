@@ -11,6 +11,8 @@ import { routeToYelp, routeToYelpSpecific } from "./utils/yelpService";
 import * as locationService from "./utils/locationService";
 // import history from "./history";
 
+const SAVED_LOCATIONS_PAGE_KEY = "/locations";
+
 class App extends React.Component {
   constructor() {
     super();
@@ -21,36 +23,19 @@ class App extends React.Component {
         long: null,
       },
       yelpGrabs: [],
-      savedLocations: [],
       savedLocationsObjs: [],
     };
   }
 
   async componentDidMount() {
-    const locationsObjs = await this.showAllLocations();
-    this.setState({
-      savedLocationsObjs: locationsObjs,
-    });
+    const { location: { pathname = "" } = {} } = this.props;
+    if (pathname === SAVED_LOCATIONS_PAGE_KEY) {
+      const { user: { email = "" } = {} } = this.state;
+      const user = await userService.getUserByEmail(email);
+      const savedLocationsObjs = user.savedLocations;
+      this.setState({ user, savedLocationsObjs });
+    }
   }
-
-  // const locationsObjsPromises = await this.showAllLocations();
-  //   const locationsObjs = await Promise.all(locationsObjsPromises);
-  //   this.setState({
-  //     savedLocationsObjs: locationsObjs,
-  //   });
-
-  // const locationsObjs = await this.showAllLocations();
-  // this.setState({
-  //   savedLocationsObjs: locationsObjs,
-  // });
-
-  // async componentDidUpdate() {
-  //   const locationsObjsPromises = await this.showAllLocations();
-  //   const locationsObjs = await Promise.all(locationsObjsPromises);
-  //   this.setState({
-  //     savedLocationsObjs: locationsObjs,
-  //   });
-  // }
 
   handleLogout = () => {
     userService.logout();
@@ -109,29 +94,27 @@ class App extends React.Component {
     });
   };
 
-  addToLocations = async (obj) => {
+  addToLocations = async (locationAdded) => {
     let query = {
       user: this.state.user,
-      locAlias: obj.alias,
+      locationAdded,
     };
-    const updatedUserLocations = await locationService.addLocation(query);
+    const user = await locationService.addLocation(query);
     this.setState({
-      user: updatedUserLocations,
-      savedLocations: updatedUserLocations.savedLocations,
+      user,
+      savedLocationsObjs: user.savedLocations,
     });
   };
 
-  deleteFromLocations = async (obj) => {
-    // history.push("/");
+  deleteFromLocations = async (locationRemoved) => {
     let query = {
       user: this.state.user,
-      locAlias: obj.alias,
+      locationRemoved,
     };
-    // history.push("/locations");
-    const updatedUserLocations = await locationService.deleteLocation(query);
+    const user = await locationService.deleteLocation(query);
     this.setState({
-      user: updatedUserLocations,
-      savedLocations: updatedUserLocations.savedLocations,
+      user,
+      savedLocationsObjs: user.savedLocations,
     });
   };
 
