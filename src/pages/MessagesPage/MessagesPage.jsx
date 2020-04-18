@@ -11,7 +11,7 @@ const MessagesPage = (props) => {
         user={props.user}
         handleSignupOrLogin={props.handleSignupOrLogin}
         handleLogout={props.handleLogout}
-        apiGrab={props.apiGrab}
+        searchRequest={props.searchRequest}
         clearYelpGrabs={props.clearYelpGrabs}
         history={props.history}
         lat={props.lat}

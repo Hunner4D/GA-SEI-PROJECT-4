@@ -91,7 +91,7 @@ const LandingPage = (props) => {
         user={props.user}
         handleSignupOrLogin={props.handleSignupOrLogin}
         handleLogout={props.handleLogout}
-        apiGrab={props.apiGrab}
+        searchRequest={props.searchRequest}
         clearYelpGrabs={props.clearYelpGrabs}
         lat={props.lat}
       />

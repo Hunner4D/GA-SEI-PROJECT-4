@@ -7,7 +7,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import SignupPage from "./pages/SignupPage/SignupPage";
 import MessagesPage from "./pages/MessagesPage/MessagesPage";
 import LocationsPage from "./pages/LocationsPage/LocationsPage";
-import { routeToYelp, routeToYelpSpecific } from "./utils/yelpService";
+import { routeToYelp } from "./utils/yelpService";
 import * as locationService from "./utils/locationService";
 // import history from "./history";
 
@@ -69,7 +69,7 @@ class App extends React.Component {
     );
   };
 
-  apiGrab = async (term) => {
+  searchRequest = async (term) => {
     if (this.state.coords.lat === null) {
       alert("Sync Location to find local Gurb!");
       return;
@@ -118,23 +118,6 @@ class App extends React.Component {
     });
   };
 
-  showAllLocations = async () => {
-    if (!this.state.user) {
-      return [];
-    }
-    const allLocationAlias = await locationService.allLocations(
-      this.state.user
-    );
-    //transform location alias' into entire objects through api grab
-    // and store them into array below
-    const allLocations = allLocationAlias.map((e) => {
-      const search = { query: e };
-      return routeToYelpSpecific(search);
-    });
-    const locations = await Promise.all(allLocations);
-    return locations;
-  };
-
   render() {
     return (
       <div className="App">
@@ -149,7 +132,7 @@ class App extends React.Component {
                 handleSignupOrLogin={this.handleSignupOrLogin}
                 handleLogout={this.handleLogout}
                 syncLocation={this.syncLocation}
-                apiGrab={this.apiGrab}
+                searchRequest={this.searchRequest}
                 yelpGrabs={this.state.yelpGrabs}
                 clearYelpGrabs={this.clearYelpGrabs}
                 addToLocations={this.addToLocations}
@@ -187,7 +170,7 @@ class App extends React.Component {
                 user={this.state.user}
                 handleLogout={this.handleLogout}
                 syncLocation={this.syncLocation}
-                apiGrab={this.apiGrab}
+                searchRequest={this.searchRequest}
                 lat={this.state.coords.lat}
                 clearYelpGrabs={this.clearYelpGrabs}
               />
@@ -204,7 +187,7 @@ class App extends React.Component {
                 savedLocationsObjs={this.state.savedLocationsObjs}
                 deleteFromLocations={this.deleteFromLocations}
                 syncLocation={this.syncLocation}
-                apiGrab={this.apiGrab}
+                searchRequest={this.searchRequest}
                 lat={this.state.coords.lat}
                 clearYelpGrabs={this.clearYelpGrabs}
               />

@@ -7,7 +7,7 @@ module.exports = {
   getYelpSpecific,
   addLocation,
   deleteLocation,
-  getLocations,
+  getSavedLocations,
 };
 
 // when page loads and user makes search request we make this call to get all places
@@ -98,7 +98,7 @@ async function deleteLocation(req, res) {
   });
 }
 
-async function getLocations(req, res) {
+async function getSavedLocations(req, res) {
   console.log("Coming from getLocations, req.body -> ", req.body);
   await User.findOne({ email: req.body.email }).exec((err, user) => {
     const allLocations = user.savedLocations;

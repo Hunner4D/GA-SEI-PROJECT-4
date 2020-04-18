@@ -23,7 +23,7 @@ class LocationsPage extends React.Component {
           user={this.props.user}
           handleSignupOrLogin={this.props.handleSignupOrLogin}
           handleLogout={this.props.handleLogout}
-          apiGrab={this.props.apiGrab}
+          searchRequest={this.props.searchRequest}
           clearYelpGrabs={this.props.clearYelpGrabs}
           history={this.props.history}
           lat={this.props.lat}
