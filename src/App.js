@@ -189,6 +189,7 @@ class App extends React.Component {
                 syncLocation={this.syncLocation}
                 apiGrab={this.apiGrab}
                 lat={this.state.coords.lat}
+                clearYelpGrabs={this.clearYelpGrabs}
               />
             )}
           />
@@ -205,6 +206,7 @@ class App extends React.Component {
                 syncLocation={this.syncLocation}
                 apiGrab={this.apiGrab}
                 lat={this.state.coords.lat}
+                clearYelpGrabs={this.clearYelpGrabs}
               />
             )}
           />
