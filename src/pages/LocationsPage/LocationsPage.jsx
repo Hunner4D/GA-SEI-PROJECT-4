@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar";
 import { Card, Header, Container } from "semantic-ui-react";
 import ListSavedLocations from "../../components/listSavedLocations/listSavedLocations";
@@ -37,9 +38,11 @@ class LocationsPage extends React.Component {
             >
               Sync Location
             </button>
-            <button className="ui segment syncButton">
-              Connect with a Guru!
-            </button>
+            <Link to="/messages" className="darkText">
+              <button className="ui segment syncButton">
+                Connect with a Guru!
+              </button>
+            </Link>
           </div>
           <Container text textAlign="center" className="homeScreen">
             <Header

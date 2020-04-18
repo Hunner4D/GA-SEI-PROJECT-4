@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar";
 import { Card, Header, Container, Image } from "semantic-ui-react";
 import burger from "../../assets/burger.png";
@@ -104,9 +105,11 @@ const LandingPage = (props) => {
           >
             Sync Location
           </button>
-          <button className="ui segment syncButton">
-            Connect with a Guru!
-          </button>
+          <Link to="/messages" className="darkText">
+            <button className="ui segment syncButton">
+              Connect with a Guru!
+            </button>
+          </Link>
         </div>
         {homeScreen()}
         <Card.Group>{listYelpGrabs}</Card.Group>
