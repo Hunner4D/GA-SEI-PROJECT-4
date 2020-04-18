@@ -44,13 +44,13 @@ class App extends React.Component {
   //   savedLocationsObjs: locationsObjs,
   // });
 
-  async componentDidUpdate() {
-    const locationsObjsPromises = await this.showAllLocations();
-    const locationsObjs = await Promise.all(locationsObjsPromises);
-    this.setState({
-      savedLocationsObjs: locationsObjs,
-    });
-  }
+  // async componentDidUpdate() {
+  //   const locationsObjsPromises = await this.showAllLocations();
+  //   const locationsObjs = await Promise.all(locationsObjsPromises);
+  //   this.setState({
+  //     savedLocationsObjs: locationsObjs,
+  //   });
+  // }
 
   handleLogout = () => {
     userService.logout();
