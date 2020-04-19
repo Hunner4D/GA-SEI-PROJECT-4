@@ -5,14 +5,14 @@ import "./listSavedLocations.css";
 // import "./LandingPage.css";
 
 const ListSavedLocations = (props) => {
-  const allLocations = props.savedLocationsObjs.map((item) => {
+  const allLocations = props.savedLocationsObjs.map((item, idx) => {
     let addCardContent = <span className="addCardContent">X</span>;
     let categories = [];
     item.categories.forEach((e) => categories.push(e.title));
     return (
       <div
         className="cardContainer"
-        key={`${item.location.address1}${item.id}`}
+        key={`${item.location.address1}${item.id}${idx}`}
       >
         <Card
           fluid

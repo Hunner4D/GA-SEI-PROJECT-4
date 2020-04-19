@@ -110,7 +110,7 @@ class App extends React.Component {
 
   addLocationAnimation = () => {
     toast("Added Location! 🍔", {
-      className: "cutom-toast",
+      className: "custom-toast",
       type: toast.TYPE.SUCCESS,
       draggable: true,
       position: toast.POSITION.TOP_RIGHT,
