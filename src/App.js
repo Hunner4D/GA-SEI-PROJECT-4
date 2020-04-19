@@ -9,7 +9,8 @@ import MessagesPage from "./pages/MessagesPage/MessagesPage";
 import LocationsPage from "./pages/LocationsPage/LocationsPage";
 import { routeToYelp } from "./utils/yelpService";
 import * as locationService from "./utils/locationService";
-// import history from "./history";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const SAVED_LOCATIONS_PAGE_KEY = "/locations";
 
@@ -104,6 +105,17 @@ class App extends React.Component {
       user,
       savedLocationsObjs: user.savedLocations,
     });
+    this.addLocationAnimation();
+  };
+
+  addLocationAnimation = () => {
+    toast("Added Location! 🍔", {
+      className: "cutom-toast",
+      type: toast.TYPE.SUCCESS,
+      draggable: true,
+      position: toast.POSITION.TOP_RIGHT,
+      autoClose: 2500,
+    });
   };
 
   deleteFromLocations = async (locationRemoved) => {
@@ -121,6 +133,10 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
+        <>
+          <ToastContainer />
+        </>
+
         <Switch>
           <Route
             exact
