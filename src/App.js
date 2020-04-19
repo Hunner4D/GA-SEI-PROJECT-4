@@ -30,6 +30,7 @@ class App extends React.Component {
 
   async componentDidMount() {
     const { location: { pathname = "" } = {} } = this.props;
+    // console.log(pathname)
     if (pathname === SAVED_LOCATIONS_PAGE_KEY) {
       const { user: { email = "" } = {} } = this.state;
       const user = await userService.getUserByEmail(email);

@@ -10,7 +10,6 @@ module.exports = {
 
 async function signup(req, res) {
   const user = new User(req.body);
-  console.log("hello");
   try {
     await user.save();
     // creating JWT after user is saved
