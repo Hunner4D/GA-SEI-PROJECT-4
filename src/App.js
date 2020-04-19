@@ -114,7 +114,7 @@ class App extends React.Component {
       type: toast.TYPE.SUCCESS,
       draggable: true,
       position: toast.POSITION.TOP_RIGHT,
-      autoClose: 2500,
+      autoClose: 3000,
     });
   };
 
