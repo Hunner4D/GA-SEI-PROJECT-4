@@ -52,7 +52,7 @@ async function getUserByEmail(req, res) {
 /*----- Helper Functions -----*/
 
 function createJWT(user) {
-  // returns payload
+  //  returns payload
   return jwt.sign(
     { user }, // data payload
     SECRET, // assigns secret verfication
