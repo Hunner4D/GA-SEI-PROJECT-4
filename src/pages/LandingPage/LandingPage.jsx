@@ -48,7 +48,6 @@ const LandingPage = (props) => {
   const listYelpGrabs = props.yelpGrabs.map((item) => {
     let categories = [];
     item.categories.forEach((e) => categories.push(e.title));
-
     let addCardContent = <span className="addCardContent">+</span>;
 
     return (
@@ -67,6 +66,7 @@ const LandingPage = (props) => {
             /-/g,
             " "
           )}`}
+          // href={`http://www.google.com/search?q=${}`}
           target="_blank"
           extra={`${item.location.address1}, ${item.location.city}, ${
             item.location.zip_code

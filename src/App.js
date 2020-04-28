@@ -30,7 +30,7 @@ class App extends React.Component {
 
   async componentDidMount() {
     const { location: { pathname = "" } = {} } = this.props;
-    // console.log(pathname)
+    console.log(pathname);
     if (pathname === SAVED_LOCATIONS_PAGE_KEY) {
       const { user: { email = "" } = {} } = this.state;
       const user = await userService.getUserByEmail(email);
@@ -51,15 +51,16 @@ class App extends React.Component {
     this.setState({
       user: userService.getUser(),
     });
-    const locationsObjs = await this.showAllLocations();
-    this.setState({
-      savedLocationsObjs: locationsObjs,
-    });
+    const { user: { email = "" } = {} } = this.state;
+    const user = await userService.getUserByEmail(email);
+    const savedLocationsObjs = user.savedLocations;
+    this.setState({ user, savedLocationsObjs });
   };
 
   syncLocation = () => {
     window.navigator.geolocation.getCurrentPosition(
       (position) => {
+        this.succesfulSyncAnimation();
         this.setState({
           coords: {
             lat: position.coords.latitude,
@@ -97,6 +98,10 @@ class App extends React.Component {
   };
 
   addToLocations = async (locationAdded) => {
+    if (!this.state.user) {
+      this.loginToAddAnimation();
+      return;
+    }
     let query = {
       user: this.state.user,
       locationAdded,
@@ -111,6 +116,25 @@ class App extends React.Component {
 
   addLocationAnimation = () => {
     toast("Added Location! 🍔", {
+      className: "custom-toast",
+      type: toast.TYPE.SUCCESS,
+      draggable: true,
+      position: toast.POSITION.TOP_RIGHT,
+      autoClose: 3000,
+    });
+  };
+
+  loginToAddAnimation = () => {
+    toast("Login to add locations... 🍔", {
+      type: toast.TYPE.ERROR,
+      draggable: true,
+      position: toast.POSITION.TOP_RIGHT,
+      autoClose: 3000,
+    });
+  };
+
+  succesfulSyncAnimation = () => {
+    toast("Location Sync Succesful!", {
       className: "custom-toast",
       type: toast.TYPE.SUCCESS,
       draggable: true,
