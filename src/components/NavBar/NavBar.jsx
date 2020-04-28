@@ -56,8 +56,9 @@ class NavBar extends React.Component {
             <span className="bigletter">G</span>uru
           </h1>
           <div className="NavBar ui segment">
-            <Image src={logo} size="tiny" />
-
+            <div>
+              <Image src={logo} size="tiny" />
+            </div>
             {this.responsiveNav()}
           </div>
         </div>
