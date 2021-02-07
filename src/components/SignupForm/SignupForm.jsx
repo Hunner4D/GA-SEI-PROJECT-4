@@ -70,7 +70,7 @@ class SignupForm extends Component {
             type="button"
             onClick={() => this.handleChoice(true)}
           >
-            Food Guru
+            Local Guru
           </button>
         </div>
       );
@@ -91,7 +91,7 @@ class SignupForm extends Component {
             type="button"
             onClick={() => this.handleChoice(true)}
           >
-            Food Guru
+            Local Guru
           </button>
         </div>
       );
@@ -112,7 +112,7 @@ class SignupForm extends Component {
             type="button"
             onClick={() => this.handleChoice(true)}
           >
-            Food Guru
+            Local Guru
           </button>
         </div>
       );
@@ -136,7 +136,7 @@ class SignupForm extends Component {
         >
           <Grid.Column style={{ maxWidth: 450 }}>
             <Header as="h2" color="teal" textAlign="center">
-              <Image src={logo} /> Sign Up with Food Guru
+              <Image src={logo} /> Sign Up with Local Guru
             </Header>
             <Form size="large" onSubmit={this.handleSubmit}>
               <Segment stacked>

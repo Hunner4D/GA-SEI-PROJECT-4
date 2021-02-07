@@ -52,7 +52,7 @@ class NavBar extends React.Component {
       <div>
         <div className="bigHeader">
           <h1 className="Title">
-            <span className="bigletter">F</span>ood&nbsp;&nbsp;&nbsp;
+            <span className="bigletter">L</span>ocal&nbsp;&nbsp;&nbsp;
             <span className="bigletter">G</span>uru
           </h1>
           <div className="NavBar ui segment">
