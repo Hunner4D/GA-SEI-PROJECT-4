@@ -1,5 +1,3 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ## Local Guru
 
 This application is designed to give users a more personalized and easy to use
